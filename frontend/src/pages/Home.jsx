@@ -32,6 +32,7 @@ const styles = {
     flexDirection: 'column',
     gap: '2.5rem',
   },
+
   resetSection: {
     width: '100%',
     maxWidth: '100%',
@@ -42,6 +43,7 @@ const styles = {
     borderRadius: 0,
     boxShadow: 'none',
   },
+
   navbar: {
     display: 'flex',
     alignItems: 'center',
@@ -57,6 +59,7 @@ const styles = {
     zIndex: 50,
     backdropFilter: 'blur(10px)',
   },
+
   brand: {
     display: 'inline-flex',
     alignItems: 'center',
@@ -66,6 +69,7 @@ const styles = {
     color: 'var(--color-text-heading)',
     textDecoration: 'none',
   },
+
   brandIcon: {
     display: 'inline-flex',
     alignItems: 'center',
@@ -73,25 +77,30 @@ const styles = {
     width: '2.25rem',
     height: '2.25rem',
     borderRadius: '0.7rem',
-    background: 'linear-gradient(135deg, var(--color-primary), var(--color-accent))',
+    background:
+      'linear-gradient(135deg, var(--color-primary), var(--color-accent))',
     color: '#fff',
   },
+
   navDesktop: {
     display: 'flex',
     alignItems: 'center',
     gap: '1.5rem',
   },
+
   navLink: {
     color: 'var(--color-text)',
     fontWeight: 500,
     fontSize: '0.95rem',
     textDecoration: 'none',
   },
+
   navActions: {
     display: 'flex',
     alignItems: 'center',
     gap: '0.65rem',
   },
+
   menuButton: {
     display: 'inline-flex',
     alignItems: 'center',
@@ -114,6 +123,7 @@ const styles = {
     cursor: 'pointer',
     lineHeight: 1,
   },
+
   mobilePanel: {
     display: 'flex',
     flexDirection: 'column',
@@ -128,6 +138,7 @@ const styles = {
     borderRadius: 'var(--radius-lg)',
     boxShadow: 'var(--shadow-md)',
   },
+
   mobileNavLink: {
     color: 'var(--color-text)',
     fontWeight: 500,
@@ -138,6 +149,7 @@ const styles = {
     width: '100%',
     boxSizing: 'border-box',
   },
+
   hero: {
     display: 'grid',
     gridTemplateColumns: '1.05fr 0.95fr',
@@ -145,11 +157,13 @@ const styles = {
     alignItems: 'center',
     padding: '1.5rem 0 0.5rem',
   },
+
   heroCopy: {
     display: 'flex',
     flexDirection: 'column',
     gap: '1.15rem',
   },
+
   heroTitle: {
     margin: 0,
     fontSize: 'clamp(2rem, 4.5vw, 3.25rem)',
@@ -157,6 +171,7 @@ const styles = {
     letterSpacing: '-0.03em',
     color: 'var(--color-text-heading)',
   },
+
   heroText: {
     margin: 0,
     maxWidth: '32rem',
@@ -164,23 +179,27 @@ const styles = {
     fontSize: '1.0625rem',
     lineHeight: 1.7,
   },
+
   heroActions: {
     display: 'flex',
     flexWrap: 'wrap',
     gap: '0.75rem',
     marginTop: '0.25rem',
   },
+
+  /* BLUE HERO VISUAL */
   heroVisual: {
     position: 'relative',
     minHeight: '20rem',
     borderRadius: 'var(--radius-lg)',
     background:
-      'radial-gradient(circle at 18% 18%, rgba(79, 70, 229, 0.18), transparent 42%), radial-gradient(circle at 82% 28%, rgba(124, 58, 237, 0.2), transparent 40%), linear-gradient(160deg, #eef2ff 0%, #f5f3ff 48%, #ffffff 100%)',
+      'radial-gradient(circle at 18% 18%, rgba(37, 99, 235, 0.18), transparent 42%), radial-gradient(circle at 82% 28%, rgba(59, 130, 246, 0.2), transparent 40%), linear-gradient(160deg, #eff6ff 0%, #dbeafe 48%, #ffffff 100%)',
     border: '1px solid var(--color-border)',
     boxShadow: 'var(--shadow-md)',
     overflow: 'hidden',
     padding: '1.5rem',
   },
+
   floatCard: {
     position: 'absolute',
     background: 'var(--color-surface)',
@@ -189,10 +208,12 @@ const styles = {
     boxShadow: 'var(--shadow-md)',
     padding: '0.9rem 1rem',
   },
+
   orb: {
     position: 'absolute',
     borderRadius: '50%',
   },
+
   iconWrap: {
     display: 'inline-flex',
     alignItems: 'center',
@@ -203,11 +224,13 @@ const styles = {
     background: 'var(--color-primary-soft)',
     color: 'var(--color-primary)',
   },
+
   valueGrid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
     gap: '1rem',
   },
+
   valueItem: {
     display: 'flex',
     alignItems: 'center',
@@ -218,6 +241,7 @@ const styles = {
     borderRadius: 'var(--radius-lg)',
     boxShadow: 'var(--shadow-sm)',
   },
+
   valueTitle: {
     margin: 0,
     fontSize: '0.95rem',
@@ -225,6 +249,7 @@ const styles = {
     color: 'var(--color-text-heading)',
     lineHeight: 1.3,
   },
+
   footer: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -237,6 +262,7 @@ const styles = {
     borderRadius: 'var(--radius-lg)',
     boxShadow: 'var(--shadow-sm)',
   },
+
   copyright: {
     margin: 0,
     fontSize: '0.8125rem',
@@ -277,17 +303,29 @@ function Navbar({ isCompact, menuOpen, setMenuOpen }) {
   return (
     <>
       <header style={navbarStyle}>
-        <a href="#top" style={brandStyle} onClick={() => setMenuOpen(false)}>
-          <span style={{ ...styles.brandIcon, flexShrink: 0 }} aria-hidden="true">
+        <a
+          href="#top"
+          style={brandStyle}
+          onClick={() => setMenuOpen(false)}
+        >
+          <span
+            style={{ ...styles.brandIcon, flexShrink: 0 }}
+            aria-hidden="true"
+          >
             <GraduationCap size={18} />
           </span>
+
           AI Career Advisor
         </a>
 
         {!isCompact && (
           <nav style={styles.navDesktop} aria-label="Primary">
             {navLinks.map((item) => (
-              <a key={item.href} href={item.href} style={styles.navLink}>
+              <a
+                key={item.href}
+                href={item.href}
+                style={styles.navLink}
+              >
                 {item.label}
               </a>
             ))}
@@ -328,6 +366,7 @@ function Navbar({ isCompact, menuOpen, setMenuOpen }) {
 function HeroVisual() {
   return (
     <div style={styles.heroVisual} aria-hidden="true">
+      {/* BLUE TOP-RIGHT CIRCLE */}
       <div
         style={{
           ...styles.orb,
@@ -335,9 +374,11 @@ function HeroVisual() {
           height: '8rem',
           top: '-1.25rem',
           right: '-1.25rem',
-          background: 'rgba(79, 70, 229, 0.22)',
+          background: 'rgba(37, 99, 235, 0.22)',
         }}
       />
+
+      {/* BLUE BOTTOM-LEFT CIRCLE */}
       <div
         style={{
           ...styles.orb,
@@ -345,19 +386,41 @@ function HeroVisual() {
           height: '6rem',
           bottom: '1rem',
           left: '-1rem',
-          background: 'rgba(124, 58, 237, 0.18)',
+          background: 'rgba(59, 130, 246, 0.18)',
         }}
       />
 
-      <div style={{ ...styles.floatCard, top: '1.75rem', left: '1.25rem', width: '11rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', marginBottom: '0.4rem' }}>
+      {/* SKILLS MATCH CARD */}
+      <div
+        style={{
+          ...styles.floatCard,
+          top: '1.75rem',
+          left: '1.25rem',
+          width: '11rem',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.55rem',
+            marginBottom: '0.4rem',
+          }}
+        >
           <span style={styles.iconWrap}>
             <FileText size={16} />
           </span>
-          <strong style={{ fontSize: '0.875rem', color: 'var(--color-text-heading)' }}>
+
+          <strong
+            style={{
+              fontSize: '0.875rem',
+              color: 'var(--color-text-heading)',
+            }}
+          >
             Skills Match
           </strong>
         </div>
+
         <div
           style={{
             height: '0.45rem',
@@ -371,14 +434,29 @@ function HeroVisual() {
               width: '88%',
               height: '100%',
               borderRadius: '9999px',
-              background: 'linear-gradient(90deg, var(--color-primary), var(--color-accent))',
+              background:
+                'linear-gradient(90deg, var(--color-primary), var(--color-accent))',
             }}
           />
         </div>
       </div>
 
-      <div style={{ ...styles.floatCard, top: '7.25rem', right: '1.25rem', width: '11.5rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+      {/* CAREER PATHS CARD */}
+      <div
+        style={{
+          ...styles.floatCard,
+          top: '7.25rem',
+          right: '1.25rem',
+          width: '11.5rem',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.55rem',
+          }}
+        >
           <span
             style={{
               ...styles.iconWrap,
@@ -388,18 +466,44 @@ function HeroVisual() {
           >
             <Compass size={16} />
           </span>
-          <strong style={{ fontSize: '0.875rem', color: 'var(--color-text-heading)' }}>
+
+          <strong
+            style={{
+              fontSize: '0.875rem',
+              color: 'var(--color-text-heading)',
+            }}
+          >
             Career Paths
           </strong>
         </div>
       </div>
 
-      <div style={{ ...styles.floatCard, bottom: '1.75rem', left: '2rem', width: '12rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+      {/* LEARNING ROADMAP CARD */}
+      <div
+        style={{
+          ...styles.floatCard,
+          bottom: '1.75rem',
+          left: '2rem',
+          width: '12rem',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.55rem',
+          }}
+        >
           <span style={styles.iconWrap}>
             <Target size={16} />
           </span>
-          <strong style={{ fontSize: '0.875rem', color: 'var(--color-text-heading)' }}>
+
+          <strong
+            style={{
+              fontSize: '0.875rem',
+              color: 'var(--color-text-heading)',
+            }}
+          >
             Learning Roadmap
           </strong>
         </div>
@@ -410,8 +514,11 @@ function HeroVisual() {
 
 function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+
   const [layout, setLayout] = useState(() =>
-    typeof window !== 'undefined' ? getLayoutMode(window.innerWidth) : 'desktop'
+    typeof window !== 'undefined'
+      ? getLayoutMode(window.innerWidth)
+      : 'desktop'
   );
 
   const isCompact = layout !== 'desktop';
@@ -419,68 +526,106 @@ function Home() {
   useEffect(() => {
     const onResize = () => {
       const next = getLayoutMode(window.innerWidth);
+
       setLayout(next);
-      if (next === 'desktop') setMenuOpen(false);
+
+      if (next === 'desktop') {
+        setMenuOpen(false);
+      }
     };
 
     onResize();
+
     window.addEventListener('resize', onResize);
+
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
   const heroLayout = {
     ...styles.hero,
     ...(layout !== 'desktop'
-      ? { gridTemplateColumns: '1fr', gap: '1.5rem', paddingTop: '0.75rem' }
+      ? {
+          gridTemplateColumns: '1fr',
+          gap: '1.5rem',
+          paddingTop: '0.75rem',
+        }
       : {}),
   };
 
   const valueLayout = {
     ...styles.valueGrid,
-    ...(layout === 'mobile' ? { gridTemplateColumns: '1fr' } : {}),
+    ...(layout === 'mobile'
+      ? {
+          gridTemplateColumns: '1fr',
+        }
+      : {}),
   };
 
   const footerLayout = {
     ...styles.footer,
     ...(layout === 'mobile'
-      ? { flexDirection: 'column', alignItems: 'flex-start' }
+      ? {
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+        }
       : {}),
   };
 
   return (
     <div id="top" style={styles.page}>
-      <Navbar isCompact={isCompact} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <Navbar
+        isCompact={isCompact}
+        menuOpen={menuOpen}
+        setMenuOpen={setMenuOpen}
+      />
 
-      <section style={{ ...styles.resetSection, ...heroLayout }} aria-labelledby="hero-heading">
+      <section
+        style={{
+          ...styles.resetSection,
+          ...heroLayout,
+        }}
+        aria-labelledby="hero-heading"
+      >
         <div style={styles.heroCopy}>
           <h1 id="hero-heading" style={styles.heroTitle}>
             Find Your Career Path
           </h1>
+
           <p style={styles.heroText}>
-            Discover career opportunities that match your skills, interests, education, and
-            experience.
+            Discover career opportunities that match your skills,
+            interests, education, and experience.
           </p>
+
           <div style={styles.heroActions}>
             <Link to="/register" className="btn btn--primary">
               Get Started
               <ArrowRight size={18} />
             </Link>
+
             <Link to="/login" className="btn btn--outline">
               Login
             </Link>
           </div>
         </div>
+
         <HeroVisual />
       </section>
 
-      <section id="about" style={styles.resetSection} aria-label="What you can do">
+      <section
+        id="about"
+        style={styles.resetSection}
+        aria-label="What you can do"
+      >
         <div style={valueLayout}>
           {valueItems.map(({ icon: Icon, title }) => (
             <article key={title} style={styles.valueItem}>
               <span style={styles.iconWrap}>
                 <Icon size={18} />
               </span>
-              <h2 style={styles.valueTitle}>{title}</h2>
+
+              <h2 style={styles.valueTitle}>
+                {title}
+              </h2>
             </article>
           ))}
         </div>
@@ -491,8 +636,10 @@ function Home() {
           <span style={styles.brandIcon} aria-hidden="true">
             <GraduationCap size={18} />
           </span>
+
           AI Career Advisor
         </div>
+
         <p style={styles.copyright}>
           © {new Date().getFullYear()} AI Career Advisor. All rights reserved.
         </p>
