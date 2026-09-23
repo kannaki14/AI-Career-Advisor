@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import ResumeUpload from './pages/ResumeUpload';
+import SkillProfile from './pages/SkillProfile';
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +17,8 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/resume-upload" element={<ResumeUpload />} />
+          <Route path="/skill-profile" element={<SkillProfile />} />
+        
         </Routes>
       </div>
     </BrowserRouter>
