@@ -39,6 +39,32 @@ def calculate_skill_match(user_skills, required_skills):
     }
 
 
+def analyze_skill_gap(user_skills, required_skills):
+    skill_result = calculate_skill_match(
+        user_skills,
+        required_skills
+    )
+
+    matched_skills = skill_result["matched_skills"]
+    missing_skills = skill_result["missing_skills"]
+
+    return {
+        "matched_skills": matched_skills,
+        "missing_skills": missing_skills,
+        "skills_to_improve": missing_skills.copy(),
+        "match_percentage": skill_result["match_percentage"]
+    }
+
+
+def get_skills_to_improve(user_skills, required_skills):
+    skill_gap = analyze_skill_gap(
+        user_skills,
+        required_skills
+    )
+
+    return skill_gap["missing_skills"]
+
+
 def calculate_interest_match(user_interests, career_interests):
     user_interests = {
         interest.strip().lower()
@@ -102,6 +128,7 @@ def recommend_careers(user_skills, user_interests=None, top_n=5):
             "interest_match_percentage": interest_result["interest_percentage"],
             "matched_skills": skill_result["matched_skills"],
             "missing_skills": skill_result["missing_skills"],
+            "skills_to_improve": skill_result["missing_skills"].copy(),
             "matched_interests": interest_result["matched_interests"]
         })
 
