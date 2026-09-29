@@ -13,7 +13,7 @@ INTERESTS = {
     4: ["Data Analysis", "Statistics", "Business", "Problem Solving", "Technology"],
     5: ["Data Science", "Statistics", "Artificial Intelligence", "Research", "Problem Solving"],
     6: ["Machine Learning", "Artificial Intelligence", "Programming", "Research", "Technology"],
-    7: ["Artificial Intelligence", "Machine Learning", "Generative AI", "Programming", "Innovation"],
+    7: ["Artificial Intelligence", "Machine Learning", "Technology", "Problem Solving"],
     8: ["Cybersecurity", "Ethical Hacking", "Network Security", "Technology", "Problem Solving"],
     9: ["Cloud Computing", "Technology", "Infrastructure", "Networking", "Automation"],
     10: ["Cloud Computing", "Automation", "Infrastructure", "Software Development", "Technology"],

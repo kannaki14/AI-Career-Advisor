@@ -132,20 +132,20 @@
     "career": "AI Engineer",
     "category": "Technology & Software",
     "required_skills": [
-        "Python",
-        "Machine Learning",
-        "Deep Learning",
-        "Neural Networks",
-        "Generative AI",
-        "APIs",
-        "TensorFlow",
-        "PyTorch"
+      "Python",
+      "Machine Learning",
+      "Deep Learning",
+      "Neural Networks",
+      "Generative AI",
+      "APIs",
+      "TensorFlow",
+      "PyTorch"
     ],
     "related_interests": [
-        "Artificial Intelligence",
-        "Machine Learning",
-        "Technology",
-        "Problem Solving"
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Technology",
+      "Problem Solving"
     ]
   },
   {
