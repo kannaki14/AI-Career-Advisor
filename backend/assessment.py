@@ -1,5 +1,7 @@
 import os
+import json
 from google import genai
+
 
 def generate_assessment_questions(skill_profile, questions_per_skill=10):
     """
@@ -20,7 +22,7 @@ def generate_assessment_questions(skill_profile, questions_per_skill=10):
     prompt = f"""
 You are an AI skill assessment generator.
 
-Create one multiple-choice assessment question for each of these
+Create multiple-choice assessment questions for each of these
 technical skills:
 
 {skills_text}
@@ -59,4 +61,4 @@ Use this format:
         contents=prompt
     )
 
-    return response.text
+    return json.loads(response.text)
