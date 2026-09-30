@@ -92,6 +92,22 @@ def calculate_interest_match(user_interests, career_interests):
         "interest_percentage": round(interest_percentage, 2)
     }
 
+def extract_interests(resume_text):
+    if not resume_text:
+        return []
+
+    if "INTERESTS" not in resume_text:
+        return []
+
+    interests_section = resume_text.split(
+        "INTERESTS", 1
+    )[1].strip()
+
+    return [
+        interest.strip()
+        for interest in interests_section.split(",")
+        if interest.strip()
+    ]
 
 def recommend_careers(user_skills, user_interests=None, top_n=5):
     if user_interests is None:
