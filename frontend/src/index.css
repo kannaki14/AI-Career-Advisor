@@ -548,3 +548,67 @@ li {
     transition-duration: 0.01ms !important;
   }
 }
+.assessment-results {
+  width: 100%;
+  margin: 28px 0;
+  text-align: left;
+}
+
+.assessment-results h3 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #1e293b;
+}
+
+.assessment-result-item {
+  margin-bottom: 20px;
+}
+
+.assessment-result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  color: #334155;
+}
+
+.assessment-result-header span {
+  font-weight: 600;
+}
+
+.assessment-result-header strong {
+  color: #2563eb;
+}
+
+.assessment-result-bar-background {
+  width: 100%;
+  height: 9px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.assessment-result-bar {
+  height: 100%;
+  background: #2563eb;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.assessment-result-percentage {
+  display: block;
+  margin-top: 5px;
+  font-size: 13px;
+  color: #64748b;
+  text-align: right;
+}
+
+@media (max-width: 600px) {
+  .assessment-results {
+    margin: 22px 0;
+  }
+
+  .assessment-results h3 {
+    font-size: 18px;
+  }
+}

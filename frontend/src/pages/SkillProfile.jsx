@@ -1,289 +1,654 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import {
+  ArrowRight,
+  Brain,
+  CheckCircle2,
+  Code2,
+  GraduationCap,
+  Sparkles,
+  Target,
+  Upload,
+  UserRound,
+} from 'lucide-react';
 
 function SkillProfile() {
-  const technicalSkills = [
-    { name: 'Python', level: 85 },
-    { name: 'JavaScript', level: 75 },
-    { name: 'React', level: 70 },
-    { name: 'SQL', level: 65 },
-    { name: 'Git & GitHub', level: 80 },
-  ];
+  const navigate = useNavigate();
 
-  const softSkills = [
-    'Communication',
-    'Problem Solving',
-    'Teamwork',
-    'Time Management',
-  ];
+  const [skillProfile, setSkillProfile] = useState(null);
+
+  useEffect(() => {
+    const savedProfile = localStorage.getItem('skillProfile');
+
+    if (savedProfile) {
+      try {
+        setSkillProfile(JSON.parse(savedProfile));
+      } catch (error) {
+        console.error('Failed to load skill profile:', error);
+      }
+    }
+  }, []);
+
+  const technicalSkills = skillProfile?.technical_skills || [];
+  const softSkills = skillProfile?.soft_skills || [];
+  const education = skillProfile?.education || [];
+
+  const technicalSkillCount = technicalSkills.length;
+  const softSkillCount = softSkills.length;
+
+  const candidateName = skillProfile?.name || 'Your Profile';
 
   return (
-    <div className="skill-profile-page">
-
+    <div className="page-container">
       {/* Page Header */}
-      <div className="skill-profile-header">
-        <div className="skill-profile-header-icon">♙</div>
-
+      <div
+        className="page-header"
+        style={{
+          marginBottom: '1.5rem',
+        }}
+      >
         <div>
-          <h2 style={{ fontSize: 'clamp(1.7rem, 3vw, 2rem)' }}>
-            My Skill Profile
-          </h2>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              color: 'var(--color-primary)',
+              fontWeight: '600',
+              marginBottom: '0.5rem',
+            }}
+          >
+            <Sparkles size={18} />
+            AI-Powered Skill Analysis
+          </div>
 
-          <p style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-            View your current skills and complete a short assessment
-            to help us understand your strengths.
+          <h1>Skill Profile</h1>
+
+          <p>
+            Review the skills identified from your resume and prepare for your
+            personalized career assessment.
           </p>
         </div>
       </div>
 
-      {/* Skill Summary */}
-      <div className="skill-summary-grid">
-
-        <div className="skill-summary-card">
-          <div className="skill-summary-icon">⌘</div>
+      {/* Profile Welcome */}
+      <div
+        className="card"
+        style={{
+          marginBottom: '1.5rem',
+          background:
+            'linear-gradient(135deg, var(--color-primary-soft), #ffffff)',
+          border: '1px solid var(--color-border-focus)',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1rem',
+            flexWrap: 'wrap',
+          }}
+        >
+          <div
+            style={{
+              width: '54px',
+              height: '54px',
+              borderRadius: '50%',
+              background: 'var(--color-primary)',
+              color: '#ffffff',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+            }}
+          >
+            <UserRound size={26} />
+          </div>
 
           <div>
-            <strong style={{ fontSize: '1.5rem' }}>5</strong>
-            <span style={{ fontSize: '0.95rem' }}>
-              Technical Skills
-            </span>
+            <p
+              style={{
+                margin: 0,
+                fontSize: '0.9rem',
+                color: 'var(--color-text-muted)',
+              }}
+            >
+              Resume analyzed for
+            </p>
+
+            <h2
+              style={{
+                margin: '0.2rem 0 0',
+              }}
+            >
+              {candidateName}
+            </h2>
           </div>
         </div>
-
-        <div className="skill-summary-card">
-          <div className="skill-summary-icon">✦</div>
-
-          <div>
-            <strong style={{ fontSize: '1.5rem' }}>4</strong>
-            <span style={{ fontSize: '0.95rem' }}>
-              Soft Skills
-            </span>
-          </div>
-        </div>
-
-        <div className="skill-summary-card">
-          <div className="skill-summary-icon">✓</div>
-
-          <div>
-            <strong style={{ fontSize: '1.5rem' }}>1</strong>
-            <span style={{ fontSize: '0.95rem' }}>
-              Skill Assessment
-            </span>
-          </div>
-        </div>
-
       </div>
 
-      {/* Main Skills */}
-      <div className="skill-content-grid">
-
+      {/* Summary Cards */}
+      <div
+        className="dashboard-grid"
+        style={{
+          marginBottom: '1.5rem',
+        }}
+      >
         {/* Technical Skills */}
-        <div className="skill-card">
-
-          <div className="skill-card-title">
-            <div className="skill-card-icon">⌘</div>
-
+        <div
+          className="card"
+          style={{
+            position: 'relative',
+            overflow: 'hidden',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'flex-start',
+            }}
+          >
             <div>
-              <h3 style={{ fontSize: '1.2rem' }}>
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: '0.9rem',
+                  color: 'var(--color-text-muted)',
+                }}
+              >
                 Technical Skills
-              </h3>
+              </p>
 
-              <p style={{ fontSize: '0.95rem', lineHeight: 1.6 }}>
-                Your current technical skills and proficiency levels.
+              <div
+                style={{
+                  fontSize: '2.25rem',
+                  fontWeight: '800',
+                  color: 'var(--color-primary)',
+                  marginTop: '0.3rem',
+                }}
+              >
+                {technicalSkillCount}
+              </div>
+
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: '0.85rem',
+                }}
+              >
+                Skills identified
               </p>
             </div>
+
+            <div
+              style={{
+                width: '44px',
+                height: '44px',
+                borderRadius: '12px',
+                background: 'var(--color-primary-soft)',
+                color: 'var(--color-primary)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Code2 size={23} />
+            </div>
           </div>
-
-          <div className="technical-skills-list">
-
-            {technicalSkills.map((skill) => (
-              <div
-                className="technical-skill"
-                key={skill.name}
-              >
-
-                <div className="skill-name-row">
-                  <span
-                    style={{
-                      fontSize: '1rem',
-                      fontWeight: 600,
-                    }}
-                  >
-                    {skill.name}
-                  </span>
-
-                  <span
-                    style={{
-                      fontSize: '0.9rem',
-                      fontWeight: 600,
-                    }}
-                  >
-                    {skill.level}%
-                  </span>
-                </div>
-
-                <div className="skill-progress-background">
-                  <div
-                    className="skill-progress"
-                    style={{ width: `${skill.level}%` }}
-                  />
-                </div>
-
-              </div>
-            ))}
-
-          </div>
-
-          <button
-            className="secondary-blue-button"
-            style={{ fontSize: '0.95rem' }}
-          >
-            View All Skills →
-          </button>
-
         </div>
 
         {/* Soft Skills */}
-        <div className="skill-card">
+        <div
+          className="card"
+          style={{
+            position: 'relative',
+            overflow: 'hidden',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'flex-start',
+            }}
+          >
+            <div>
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: '0.9rem',
+                  color: 'var(--color-text-muted)',
+                }}
+              >
+                Soft Skills
+              </p>
 
-          <div className="skill-card-title">
-            <div className="skill-card-icon">✦</div>
+              <div
+                style={{
+                  fontSize: '2.25rem',
+                  fontWeight: '800',
+                  color: 'var(--color-primary)',
+                  marginTop: '0.3rem',
+                }}
+              >
+                {softSkillCount}
+              </div>
+
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: '0.85rem',
+                }}
+              >
+                Personal strengths
+              </p>
+            </div>
+
+            <div
+              style={{
+                width: '44px',
+                height: '44px',
+                borderRadius: '12px',
+                background: 'var(--color-primary-soft)',
+                color: 'var(--color-primary)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Brain size={23} />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Education */}
+      {education.length > 0 && (
+        <div
+          className="card"
+          style={{
+            marginBottom: '1.5rem',
+          }}
+        >
+          <div
+            className="card-header"
+            style={{
+              marginBottom: '1rem',
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+              }}
+            >
+              <div
+                style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '10px',
+                  background: 'var(--color-primary-soft)',
+                  color: 'var(--color-primary)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <GraduationCap size={21} />
+              </div>
+
+              <div>
+                <h2>Education</h2>
+                <p>Education information identified from your resume.</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.65rem',
+            }}
+          >
+            {education.map((item, index) => (
+              <div
+                key={`${item}-${index}`}
+                style={{
+                  padding: '0.85rem 1rem',
+                  borderRadius: '10px',
+                  background: '#f8fafc',
+                  border: '1px solid var(--color-border)',
+                }}
+              >
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Technical Skills */}
+      <div
+        className="card"
+        style={{
+          marginBottom: '1.5rem',
+        }}
+      >
+        <div
+          className="card-header"
+          style={{
+            marginBottom: '1.25rem',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.75rem',
+            }}
+          >
+            <div
+              style={{
+                width: '40px',
+                height: '40px',
+                borderRadius: '10px',
+                background: 'var(--color-primary-soft)',
+                color: 'var(--color-primary)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Code2 size={21} />
+            </div>
 
             <div>
-              <h3 style={{ fontSize: '1.2rem' }}>
-                Soft Skills
-              </h3>
+              <h2>Technical Skills</h2>
+              <p>
+                Technical skills identified from your uploaded resume.
+              </p>
+            </div>
+          </div>
+        </div>
 
-              <p style={{ fontSize: '0.95rem', lineHeight: 1.6 }}>
-                Your interpersonal and professional skills.
+        {technicalSkills.length > 0 ? (
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns:
+                'repeat(auto-fit, minmax(180px, 1fr))',
+              gap: '0.85rem',
+            }}
+          >
+            {technicalSkills.map((skill, index) => (
+              <div
+                key={`${skill}-${index}`}
+                style={{
+                  padding: '1rem',
+                  borderRadius: '12px',
+                  border: '1px solid var(--color-border)',
+                  background: '#ffffff',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.65rem',
+                }}
+              >
+                <div
+                  style={{
+                    width: '8px',
+                    height: '8px',
+                    borderRadius: '50%',
+                    background: 'var(--color-primary)',
+                    flexShrink: 0,
+                  }}
+                />
+
+                <span
+                  style={{
+                    fontWeight: '600',
+                    color: 'var(--color-text)',
+                  }}
+                >
+                  {skill}
+                </span>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div
+            style={{
+              padding: '2rem',
+              textAlign: 'center',
+              border: '1px dashed var(--color-border)',
+              borderRadius: '12px',
+            }}
+          >
+            <p style={{ marginBottom: '1rem' }}>
+              No technical skills have been identified yet.
+            </p>
+
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={() => navigate('/resume-upload')}
+            >
+              <Upload size={17} />
+              Upload Resume
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Soft Skills */}
+      <div
+        className="card"
+        style={{
+          marginBottom: '1.5rem',
+        }}
+      >
+        <div
+          className="card-header"
+          style={{
+            marginBottom: '1.25rem',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.75rem',
+            }}
+          >
+            <div
+              style={{
+                width: '40px',
+                height: '40px',
+                borderRadius: '10px',
+                background: 'var(--color-primary-soft)',
+                color: 'var(--color-primary)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Brain size={21} />
+            </div>
+
+            <div>
+              <h2>Soft Skills</h2>
+              <p>
+                Personal and professional skills identified from your resume.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {softSkills.length > 0 ? (
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '0.7rem',
+            }}
+          >
+            {softSkills.map((skill, index) => (
+              <span
+                key={`${skill}-${index}`}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.45rem',
+                  padding: '0.65rem 0.9rem',
+                  borderRadius: '999px',
+                  background: 'var(--color-primary-soft)',
+                  color: 'var(--color-primary)',
+                  border: '1px solid var(--color-border-focus)',
+                  fontWeight: '600',
+                  fontSize: '0.9rem',
+                }}
+              >
+                <CheckCircle2 size={15} />
+                {skill}
+              </span>
+            ))}
+          </div>
+        ) : (
+          <div
+            style={{
+              padding: '2rem',
+              textAlign: 'center',
+              border: '1px dashed var(--color-border)',
+              borderRadius: '12px',
+            }}
+          >
+            <p>No soft skills have been identified yet.</p>
+          </div>
+        )}
+      </div>
+
+      {/* Assessment CTA */}
+      <div
+        className="card"
+        style={{
+          marginBottom: '1.5rem',
+          background:
+            'linear-gradient(135deg, var(--color-primary-soft), #ffffff)',
+          border: '1px solid var(--color-border-focus)',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            gap: '1.5rem',
+            flexWrap: 'wrap',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '1rem',
+              flex: 1,
+              minWidth: '240px',
+            }}
+          >
+            <div
+              style={{
+                width: '46px',
+                height: '46px',
+                borderRadius: '12px',
+                background: 'var(--color-primary)',
+                color: '#ffffff',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0,
+              }}
+            >
+              <Target size={23} />
+            </div>
+
+            <div>
+              <h2>Ready for your skill assessment?</h2>
+
+              <p style={{ marginTop: '0.4rem' }}>
+                Take a short assessment to verify your technical knowledge.
+                Your results can later support career recommendations and
+                skill-gap analysis.
               </p>
             </div>
           </div>
 
-          <div className="soft-skills-list">
-
-            {softSkills.map((skill) => (
-              <span
-                className="soft-skill-tag"
-                key={skill}
-                style={{ fontSize: '0.9rem' }}
-              >
-                ✓ {skill}
-              </span>
-            ))}
-
-          </div>
-
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => navigate('/skill-assessment')}
+          >
+            Start Assessment
+            <ArrowRight size={17} />
+          </button>
         </div>
-
       </div>
 
-      {/* Skill Assessment */}
-      <div className="assessment-card">
-
-        <div className="assessment-icon">✓</div>
-
-        <div className="assessment-content">
-
-          <div className="assessment-title-row">
-
-            <h3 style={{ fontSize: '1.2rem' }}>
-              Skill Assessment
-            </h3>
-
-            <span
-              className="assessment-badge"
-              style={{ fontSize: '0.85rem' }}
+      {/* Career Recommendation CTA */}
+      <div
+        className="card"
+        style={{
+          marginBottom: '2rem',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            gap: '1.5rem',
+            flexWrap: 'wrap',
+          }}
+        >
+          <div
+            style={{
+              flex: 1,
+              minWidth: '240px',
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.6rem',
+                marginBottom: '0.4rem',
+              }}
             >
-              Short Assessment
-            </span>
+              <Sparkles
+                size={19}
+                color="var(--color-primary)"
+              />
 
-          </div>
-
-          <p style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-            Take a short assessment based on the skills identified
-            from your resume. Your answers will help us understand
-            your current skill level more accurately.
-          </p>
-
-          <div className="assessment-info">
-
-            <div>
-              <strong style={{ fontSize: '1.2rem' }}>
-                5–10
-              </strong>
-
-              <span style={{ fontSize: '0.9rem' }}>
-                Questions
-              </span>
+              <h2>Career Recommendations</h2>
             </div>
 
-            <div>
-              <strong style={{ fontSize: '1.2rem' }}>
-                Skills
-              </strong>
-
-              <span style={{ fontSize: '0.9rem' }}>
-                Based on your profile
-              </span>
-            </div>
-
-            <div>
-              <strong style={{ fontSize: '1.2rem' }}>
-                Quick
-              </strong>
-
-              <span style={{ fontSize: '0.9rem' }}>
-                Easy to complete
-              </span>
-            </div>
-
+            <p>
+              Explore career paths that match your detected skills and
+              assessment results.
+            </p>
           </div>
 
           <button
-            className="primary-blue-button"
-            style={{ fontSize: '1rem' }}
+            type="button"
+            className="btn btn-primary"
+            onClick={() => navigate('/career-recommendations')}
           >
-            Start Skill Assessment →
+            Explore Careers
+            <ArrowRight size={17} />
           </button>
-
         </div>
-
       </div>
-
-      {/* Next Step */}
-      <div className="next-step-card">
-
-        <div className="next-step-icon">→</div>
-
-        <div className="next-step-content">
-
-          <span
-            className="next-step-label"
-            style={{ fontSize: '0.8rem' }}
-          >
-            NEXT STEP
-          </span>
-
-          <h3 style={{ fontSize: '1.2rem' }}>
-            Explore Career Recommendations
-          </h3>
-
-          <p style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-            After reviewing your skills and completing the assessment,
-            explore career paths that match your profile.
-          </p>
-
-        </div>
-
-        <button
-          className="next-step-button"
-          style={{ fontSize: '0.95rem' }}
-        >
-          Career Paths →
-        </button>
-
-      </div>
-
     </div>
   );
 }
