@@ -45,9 +45,9 @@ def test_career_recommendation():
         top_n=5
     )
 
-    assert len(results) == 5
-    assert results[0]["career"] == "Data Analyst"
-    assert results[0]["match_percentage"] == 58.0
+    assert len(results["recommendations"]) == 5
+    assert results["recommendations"][0]["career"] == "Data Analyst"
+    assert results["recommendations"][0]["match_percentage"] == 58.0
 
 from backend.recommendation import analyze_skill_gap
 

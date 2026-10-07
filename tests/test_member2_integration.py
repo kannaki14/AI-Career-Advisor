@@ -69,5 +69,5 @@ recommendations = recommend_careers(
 
 print("\n========== CAREER RECOMMENDATIONS ==========\n")
 
-for recommendation in recommendations:
+for recommendation in recommendations["recommendations"]:
     print(recommendation)

@@ -92,6 +92,7 @@ def calculate_interest_match(user_interests, career_interests):
         "interest_percentage": round(interest_percentage, 2)
     }
 
+
 def extract_interests(resume_text):
     if not resume_text:
         return []
@@ -109,6 +110,7 @@ def extract_interests(resume_text):
         if interest.strip()
     ]
 
+
 def recommend_careers(user_skills, user_interests=None, top_n=5):
     if user_interests is None:
         user_interests = []
@@ -117,7 +119,6 @@ def recommend_careers(user_skills, user_interests=None, top_n=5):
     recommendations = []
 
     for career in careers:
-
         # Calculate skill match
         skill_result = calculate_skill_match(
             user_skills,
@@ -140,17 +141,19 @@ def recommend_careers(user_skills, user_interests=None, top_n=5):
             "career": career["career"],
             "category": career["category"],
             "match_percentage": round(final_score, 2),
-            "skill_match_percentage": skill_result["match_percentage"],
-            "interest_match_percentage": interest_result["interest_percentage"],
             "matched_skills": skill_result["matched_skills"],
             "missing_skills": skill_result["missing_skills"],
-            "skills_to_improve": skill_result["missing_skills"].copy(),
-            "matched_interests": interest_result["matched_interests"]
+            "skills_to_improve": skill_result["missing_skills"].copy()
         })
 
+    # Sort careers from highest to lowest match
     recommendations.sort(
         key=lambda career: career["match_percentage"],
         reverse=True
     )
 
-    return recommendations[:top_n]
+    # Return the response format requested by Member 1
+    return {
+        "recommendations": recommendations[:top_n]
+    }
+
