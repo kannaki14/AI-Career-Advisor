@@ -1,4 +1,10 @@
-from backend.recommendation import calculate_skill_match
+
+from backend.recommendation import (
+    calculate_skill_match,
+    recommend_careers,
+    analyze_skill_gap,
+    extract_interests
+)
 
 
 def test_skill_match():
@@ -21,8 +27,6 @@ def test_skill_match():
     ]
 
     assert result["match_percentage"] == 75.0
-
-from backend.recommendation import recommend_careers
 
 
 def test_career_recommendation():
@@ -48,8 +52,6 @@ def test_career_recommendation():
     assert len(results["recommendations"]) == 5
     assert results["recommendations"][0]["career"] == "Data Analyst"
     assert results["recommendations"][0]["match_percentage"] == 58.0
-
-from backend.recommendation import analyze_skill_gap
 
 
 def test_skill_gap_analysis():
@@ -84,3 +86,26 @@ def test_skill_gap_analysis():
     ]
 
     assert result["match_percentage"] == 60.0
+
+
+def test_extract_interests():
+    resume_text = (
+        "INTERESTS: Data Analysis, Machine Learning\n"
+        "EDUCATION:\n"
+        "B.Sc Computer Science"
+    )
+
+    result = extract_interests(resume_text)
+
+    assert result == ["Data Analysis", "Machine Learning"]
+
+
+def test_extract_interests_missing_section():
+    resume_text = (
+        "EDUCATION:\n"
+        "B.Sc Computer Science"
+    )
+
+    result = extract_interests(resume_text)
+
+    assert result == []
