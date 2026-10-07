@@ -1,4 +1,6 @@
+
 import json
+import re
 from pathlib import Path
 
 
@@ -97,17 +99,23 @@ def extract_interests(resume_text):
     if not resume_text:
         return []
 
-    if "INTERESTS" not in resume_text:
+    match = re.search(
+        r"\bINTERESTS\b\s*:?\s*(.*?)(?=\n\s*(?:SKILLS|EDUCATION|EXPERIENCE|PROJECTS|CERTIFICATIONS|TECHNICAL SKILLS)\s*:?\s*(?:\n|$)|$)",
+        resume_text,
+        re.IGNORECASE | re.DOTALL
+    )
+
+    if not match:
         return []
 
-    interests_section = resume_text.split(
-        "INTERESTS", 1
-    )[1].strip()
+    interests_section = match.group(1).strip()
+
+    interests = re.split(r"[,;\n]", interests_section)
 
     return [
-        interest.strip()
-        for interest in interests_section.split(",")
-        if interest.strip()
+        interest.strip(" \t-•")
+        for interest in interests
+        if interest.strip(" \t-•")
     ]
 
 
@@ -152,8 +160,7 @@ def recommend_careers(user_skills, user_interests=None, top_n=5):
         reverse=True
     )
 
-    # Return the response format requested by Member 1
+    # Return the recommendations
     return {
         "recommendations": recommendations[:top_n]
     }
-
