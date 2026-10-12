@@ -1,3 +1,9 @@
+import os
+import json
+from google import genai
+
+
+
 def extract_name(resume_text):
     """
     Extract the candidate's name from the resume text.
@@ -212,6 +218,7 @@ def analyze_resume_text(resume_text):
     if not resume_text or not resume_text.strip():
         raise ValueError("Resume text cannot be empty.")
 
+
     return {
         "name": extract_name(resume_text),
         "education": extract_education(resume_text),
@@ -220,8 +227,8 @@ def analyze_resume_text(resume_text):
         "projects": extract_projects(resume_text),
         "certifications": extract_certifications(resume_text),
         "resume_text": resume_text.strip()
-        
     }
+
 
 def create_skill_profile(analysis_result):
     """
@@ -238,3 +245,55 @@ def create_skill_profile(analysis_result):
     }
 
     return skill_profile
+def analyze_resume_with_llm(resume_text):
+    """
+    Analyze resume text using Gemini LLM.
+    """
+
+    if not resume_text or not resume_text.strip():
+        raise ValueError("Resume text cannot be empty.")
+
+    client = genai.Client(
+        api_key=os.getenv("GEMINI_API_KEY")
+    )
+
+    prompt = f"""
+You are an AI resume analysis system.
+
+Analyze the following resume and extract the information below:
+
+1. Candidate name
+2. Education
+3. Technical skills
+4. Soft skills
+5. Projects
+6. Certifications
+
+Return ONLY valid JSON in exactly this format:
+
+{{
+    "name": "Candidate name",
+    "education": [],
+    "technical_skills": [],
+    "soft_skills": [],
+    "projects": [],
+    "certifications": []
+}}
+
+Rules:
+- Do not invent information that is not present in the resume.
+- Keep technical skills separate from soft skills.
+- Include all clearly mentioned projects.
+- Include all clearly mentioned certifications.
+- Return empty lists when information is not available.
+
+Resume:
+{resume_text}
+"""
+
+    response = client.models.generate_content(
+        model="gemini-flash-lite-latest",
+        contents=prompt
+    )
+
+    return json.loads(response.text)
