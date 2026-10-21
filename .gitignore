@@ -1,6 +1,16 @@
 
 __pycache__/
 *.py[cod]
+
+# Environment secrets
 .env
+.env.*
+!.env.example
+
+# Virtual environments
 .venv/
-venv/git status
+venv/
+
+# Local database
+career_advisor.db
+*.db

@@ -12,3 +12,8 @@ def home():
     return {
         "message": "AI Career Advisor API is running"
     }
+
+
+from roadmap.api import router as roadmap_router
+
+app.include_router(roadmap_router)
