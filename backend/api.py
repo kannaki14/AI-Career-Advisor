@@ -7,11 +7,17 @@ import shutil
 from resume_parser.parser import extract_resume_text
 from resume_parser.analyzer import analyze_resume_text, create_skill_profile
 from backend.assessment import generate_assessment_questions
-
-
+from typing import Optional
+from backend.recommendation import recommend_careers, extract_interests
+from pydantic import Field
 class SkillProfileRequest(BaseModel):
     technical_skills: list[str]
 
+class RecommendationRequest(BaseModel):
+    technical_skills: list[str] = Field(default_factory=list)
+    interests: list[str] = Field(default_factory=list)
+    resume_text: Optional[str] = None
+    top_n: int = Field(default=5, ge=1, le=20)
 
 app = FastAPI(
     title="AI Career Advisor API",
@@ -97,3 +103,16 @@ def generate_assessment(request: SkillProfileRequest):
     return {
         "questions": questions
     }
+
+@app.post("/recommendations")
+def get_recommendations(request: RecommendationRequest):
+    interests = request.interests
+
+    if not interests and request.resume_text:
+        interests = extract_interests(request.resume_text)
+
+    return recommend_careers(
+        user_skills=request.technical_skills,
+        user_interests=interests,
+        top_n=request.top_n
+    )
