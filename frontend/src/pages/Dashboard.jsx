@@ -63,6 +63,11 @@ const quickActions = [
     label: 'View Learning Roadmap',
     icon: Route,
   },
+  {
+    id: 'skill-gap',
+    label: 'Analyze Skill Gaps',
+    icon: ChartNoAxesCombined,
+  },
 ];
 
 const styles = {
@@ -430,8 +435,16 @@ function QuickActions({ layout }) {
   };
 
   const handleAction = (id) => {
-    if (id === 'upload-resume') {
-      navigate('/resume-upload');
+    const routes = {
+      'upload-resume': '/resume-upload',
+      'skill-assessment': '/skill-assessment',
+      'explore-careers': '/career-recommendations',
+      'learning-roadmap': '/learning-roadmap',
+      'skill-gap': '/skill-gap',
+    };
+  
+    if (routes[id]) {
+      navigate(routes[id]);
     }
   };
 
