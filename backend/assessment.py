@@ -1,8 +1,12 @@
-import os
 import json
+import os
+from pathlib import Path
+
+from dotenv import load_dotenv
 from google import genai
 
-
+BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / ".env")
 def generate_assessment_questions(skill_profile, questions_per_skill=10):
     """
     Generate AI-based assessment questions using Gemini.
