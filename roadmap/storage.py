@@ -1,22 +1,25 @@
-
 import json
 import sqlite3
 from pathlib import Path
 
 
+# Locate the project root and store the database in that folder.
 BASE_DIR = Path(__file__).resolve().parent.parent
 DB_PATH = BASE_DIR / "career_advisor.db"
 
+# Only these four topic statuses are accepted.
 VALID_STATUSES = {"Pending", "In Progress", "Completed", "Failed"}
 
 
 def get_connection():
+    """Create a database connection with dictionary-like row access."""
     connection = sqlite3.connect(DB_PATH)
     connection.row_factory = sqlite3.Row
     return connection
 
 
 def initialize_database():
+    """Create the roadmap table if it does not already exist."""
     with get_connection() as connection:
         connection.execute("""
             CREATE TABLE IF NOT EXISTS learning_roadmaps (
@@ -30,9 +33,11 @@ def initialize_database():
 
 
 def save_roadmap(roadmap, user_id=None):
+    """Save a generated roadmap and return its database ID."""
     initialize_database()
 
     with get_connection() as connection:
+        # Use SQL parameters to safely insert the roadmap data.
         cursor = connection.execute(
             """
             INSERT INTO learning_roadmaps
@@ -41,10 +46,13 @@ def save_roadmap(roadmap, user_id=None):
             """,
             (user_id, roadmap["career"], json.dumps(roadmap)),
         )
+
+        # Return the ID assigned to the newly saved roadmap.
         return cursor.lastrowid
 
 
 def get_roadmap(roadmap_id):
+    """Retrieve a saved roadmap using its unique ID."""
     initialize_database()
 
     with get_connection() as connection:
@@ -57,50 +65,65 @@ def get_roadmap(roadmap_id):
             (roadmap_id,),
         ).fetchone()
 
+    # Return None when the requested roadmap does not exist.
     if row is None:
         return None
 
+    # Convert the database row into a dictionary.
+    # Convert the stored JSON string back into a Python object.
     result = dict(row)
     result["roadmap"] = json.loads(result.pop("roadmap_json"))
     return result
 
 
 def update_topic_status(roadmap_id, topic_id, status):
+    """Update a topic status and recalculate roadmap progress."""
+
+    # Reject any status outside the supported four values.
     if status not in VALID_STATUSES:
         raise ValueError(
             "Status must be Pending, In Progress, Completed, or Failed"
         )
 
+    # Retrieve only the roadmap identified by the supplied ID.
     saved = get_roadmap(roadmap_id)
     if saved is None:
         return None
 
     roadmap = saved["roadmap"]
+
+    # Find the requested topic inside this roadmap.
     topic = next(
         (item for item in roadmap["topics"]
          if item["topic_id"] == topic_id),
         None,
     )
 
+    # Raise an error when the topic ID is not present.
     if topic is None:
         raise LookupError("Topic not found")
 
+    # Apply the new status to the selected topic.
     topic["status"] = status
 
+    # Calculate progress using only topics marked Completed.
     total_topics = len(roadmap["topics"])
     completed_topics = sum(
         item["status"] == "Completed" for item in roadmap["topics"]
     )
 
+    # Avoid division by zero when the roadmap has no topics.
     roadmap["overall_progress_percentage"] = (
         round(completed_topics / total_topics * 100)
         if total_topics else 0
     )
 
+    # Save the updated roadmap JSON for this roadmap ID only.
     with get_connection() as connection:
         connection.execute(
             "UPDATE learning_roadmaps SET roadmap_json = ? WHERE id = ?",
             (json.dumps(roadmap), roadmap_id),
         )
 
+    # Return the latest saved roadmap after the update.
     return get_roadmap(roadmap_id)
