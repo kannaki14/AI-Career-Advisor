@@ -1,3 +1,4 @@
+
 from fastapi.testclient import TestClient
 from backend.api import app
 
@@ -72,6 +73,7 @@ def test_invalid_status():
         },
     )
 
+    assert response.status_code == 200
     roadmap_id = response.json()["roadmap_id"]
 
     response = client.patch(
@@ -80,3 +82,24 @@ def test_invalid_status():
     )
 
     assert response.status_code == 422
+
+
+def test_unknown_topic_returns_404():
+    response = client.post(
+        "/roadmap/generate",
+        json={
+            "career": "Test Analyst",
+            "missing_skills": ["Python"],
+            "user_id": 13,
+        },
+    )
+
+    assert response.status_code == 200
+    roadmap_id = response.json()["roadmap_id"]
+
+    response = client.patch(
+        f"/roadmap/{roadmap_id}/topics/999",
+        json={"status": "Completed"},
+    )
+
+    assert response.status_code == 404
