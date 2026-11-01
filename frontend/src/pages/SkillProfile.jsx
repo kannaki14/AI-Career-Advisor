@@ -30,9 +30,10 @@ function SkillProfile() {
   }, []);
 
   const technicalSkills = skillProfile?.technical_skills || [];
-  const softSkills = skillProfile?.soft_skills || [];
-  const education = skillProfile?.education || [];
-
+const softSkills = skillProfile?.soft_skills || [];
+const education = skillProfile?.education || [];
+const projects = skillProfile?.projects || [];
+const certifications = skillProfile?.certifications || [];
   const technicalSkillCount = technicalSkills.length;
   const softSkillCount = softSkills.length;
 
@@ -329,6 +330,45 @@ function SkillProfile() {
           </div>
         </div>
       )}
+      
+      {/* Projects */}
+      <div className="card" style={{ marginBottom: '1.5rem' }}>
+        <div className="card-header">
+          <h2>Projects</h2>
+          <p>Projects identified from your uploaded resume.</p>
+        </div>
+
+        {projects.length > 0 ? (
+          <ul>
+            {projects.map((project, index) => (
+              <li key={`${project}-${index}`}>{project}</li>
+            ))}
+          </ul>
+        ) : (
+          <p>No projects have been identified yet.</p>
+        )}
+      </div>
+
+      {/* Certifications */}
+      <div className="card" style={{ marginBottom: '1.5rem' }}>
+        <div className="card-header">
+          <h2>Certifications</h2>
+          <p>Certifications identified from your uploaded resume.</p>
+        </div>
+
+        {certifications.length > 0 ? (
+          <ul>
+            {certifications.map((certification, index) => (
+              <li key={`${certification}-${index}`}>
+                {certification}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No certifications have been identified yet.</p>
+        )}
+      </div>
+
 
       {/* Technical Skills */}
       <div
