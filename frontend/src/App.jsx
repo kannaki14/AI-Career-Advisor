@@ -9,6 +9,7 @@ import ResumeUpload from './pages/ResumeUpload';
 import SkillProfile from './pages/SkillProfile';
 import SkillAssessment from './pages/SkillAssessment';
 import CareerRecommendations from './pages/CareerRecommendations';
+import SkillGap from './pages/SkillGap';
 
 function App() {
   return (
@@ -30,6 +31,12 @@ function App() {
           <Route
             path="/career-recommendations"
             element={<CareerRecommendations />}
+          />
+
+          {/* Member 3: Skill Gap Analysis */}
+          <Route
+            path="/skill-gap"
+            element={<SkillGap />}
           />
         </Routes>
       </div>
