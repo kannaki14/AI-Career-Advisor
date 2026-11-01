@@ -9,6 +9,8 @@ dist-ssr/
 __pycache__/
 *.py[cod]
 *.pyc
+
+# Virtual environments
 venv/
 .venv/
 
@@ -16,6 +18,12 @@ venv/
 .env
 .env.*
 !.env.example
+
+# Local databases
+career_advisor.db
+*.db
+*.sqlite
+*.sqlite3
 
 # Logs
 logs/
@@ -26,7 +34,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Editor directories and files
+# Editor files
 .vscode/*
 !.vscode/extensions.json
 .idea/

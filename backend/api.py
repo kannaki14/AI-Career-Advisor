@@ -13,6 +13,7 @@ from backend.assessment import generate_assessment_questions
 from typing import Optional
 from backend.recommendation import recommend_careers, extract_interests
 from pydantic import Field
+from roadmap.api import router as roadmap_router
 class SkillProfileRequest(BaseModel):
     technical_skills: list[str]
 
@@ -36,6 +37,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(roadmap_router)
 
 
 UPLOAD_DIR = Path("uploads")
