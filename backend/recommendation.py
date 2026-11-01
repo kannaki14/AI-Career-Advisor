@@ -1,3 +1,4 @@
+
 import json
 import re
 from pathlib import Path
@@ -15,12 +16,14 @@ def load_careers():
 def calculate_skill_match(user_skills, required_skills):
     user_skills = {
         skill.strip().lower()
-        for skill in user_skills
+        for skill in (user_skills or [])
+        if isinstance(skill, str) and skill.strip()
     }
 
     required_skills = {
         skill.strip().lower()
-        for skill in required_skills
+        for skill in (required_skills or [])
+        if isinstance(skill, str) and skill.strip()
     }
 
     matched_skills = user_skills.intersection(required_skills)
@@ -69,12 +72,14 @@ def get_skills_to_improve(user_skills, required_skills):
 def calculate_interest_match(user_interests, career_interests):
     user_interests = {
         interest.strip().lower()
-        for interest in user_interests
+        for interest in (user_interests or [])
+        if isinstance(interest, str) and interest.strip()
     }
 
     career_interests = {
         interest.strip().lower()
-        for interest in career_interests
+        for interest in (career_interests or [])
+        if isinstance(interest, str) and interest.strip()
     }
 
     matched_interests = user_interests.intersection(
@@ -108,7 +113,6 @@ def extract_interests(resume_text):
         return []
 
     interests_section = match.group(1).strip()
-
     interests = re.split(r"[,;\n]", interests_section)
 
     return [
@@ -119,6 +123,16 @@ def extract_interests(resume_text):
 
 
 def recommend_careers(user_skills, user_interests=None, top_n=5):
+    if (
+        not isinstance(top_n, int)
+        or isinstance(top_n, bool)
+        or top_n < 1
+    ):
+        raise ValueError("top_n must be a positive integer")
+
+    if user_skills is None:
+        user_skills = []
+
     if user_interests is None:
         user_interests = []
 
@@ -138,7 +152,8 @@ def recommend_careers(user_skills, user_interests=None, top_n=5):
             career.get("related_interests", [])
         )
 
-        # Combine skill and interest scores
+        # Combine skill and interest scores:
+        # 70% skill match + 30% interest match
         final_score = (
             skill_result["match_percentage"] * 0.7
             + interest_result["interest_percentage"] * 0.3
@@ -159,7 +174,7 @@ def recommend_careers(user_skills, user_interests=None, top_n=5):
         reverse=True
     )
 
-    # Return the recommendations
+    # Return the requested number of recommendations
     return {
         "recommendations": recommendations[:top_n]
     }
