@@ -13,15 +13,31 @@ def load_careers():
         return json.load(file)
 
 
+def normalize_skill(skill):
+    """Normalize skill names and common aliases."""
+    normalized = skill.strip().lower()
+
+    aliases = {
+        "microsoft excel": "excel",
+        "ms excel": "excel",
+        "js": "javascript",
+        "nodejs": "node.js",
+        "rest api": "rest apis",
+        "restful api": "rest apis",
+    }
+
+    return aliases.get(normalized, normalized)
+
+
 def calculate_skill_match(user_skills, required_skills):
     user_skills = {
-        skill.strip().lower()
+        normalize_skill(skill)
         for skill in (user_skills or [])
         if isinstance(skill, str) and skill.strip()
     }
 
     required_skills = {
-        skill.strip().lower()
+        normalize_skill(skill)
         for skill in (required_skills or [])
         if isinstance(skill, str) and skill.strip()
     }
@@ -39,14 +55,14 @@ def calculate_skill_match(user_skills, required_skills):
     return {
         "matched_skills": sorted(matched_skills),
         "missing_skills": sorted(missing_skills),
-        "match_percentage": round(match_percentage, 2)
+        "match_percentage": round(match_percentage, 2),
     }
 
 
 def analyze_skill_gap(user_skills, required_skills):
     skill_result = calculate_skill_match(
         user_skills,
-        required_skills
+        required_skills,
     )
 
     matched_skills = skill_result["matched_skills"]
@@ -56,14 +72,14 @@ def analyze_skill_gap(user_skills, required_skills):
         "matched_skills": matched_skills,
         "missing_skills": missing_skills,
         "skills_to_improve": missing_skills.copy(),
-        "match_percentage": skill_result["match_percentage"]
+        "match_percentage": skill_result["match_percentage"],
     }
 
 
 def get_skills_to_improve(user_skills, required_skills):
     skill_gap = analyze_skill_gap(
         user_skills,
-        required_skills
+        required_skills,
     )
 
     return skill_gap["missing_skills"]
@@ -95,7 +111,7 @@ def calculate_interest_match(user_interests, career_interests):
 
     return {
         "matched_interests": sorted(matched_interests),
-        "interest_percentage": round(interest_percentage, 2)
+        "interest_percentage": round(interest_percentage, 2),
     }
 
 
@@ -106,7 +122,7 @@ def extract_interests(resume_text):
     match = re.search(
         r"\bINTERESTS\b\s*:?\s*(.*?)(?=\n\s*(?:SKILLS|EDUCATION|EXPERIENCE|PROJECTS|CERTIFICATIONS|TECHNICAL SKILLS)\s*:?\s*(?:\n|$)|$)",
         resume_text,
-        re.IGNORECASE | re.DOTALL
+        re.IGNORECASE | re.DOTALL,
     )
 
     if not match:
@@ -143,13 +159,13 @@ def recommend_careers(user_skills, user_interests=None, top_n=5):
         # Calculate skill match
         skill_result = calculate_skill_match(
             user_skills,
-            career["required_skills"]
+            career["required_skills"],
         )
 
         # Calculate interest match
         interest_result = calculate_interest_match(
             user_interests,
-            career.get("related_interests", [])
+            career.get("related_interests", []),
         )
 
         # Combine skill and interest scores:
@@ -165,16 +181,16 @@ def recommend_careers(user_skills, user_interests=None, top_n=5):
             "match_percentage": round(final_score, 2),
             "matched_skills": skill_result["matched_skills"],
             "missing_skills": skill_result["missing_skills"],
-            "skills_to_improve": skill_result["missing_skills"].copy()
+            "skills_to_improve": skill_result["missing_skills"].copy(),
         })
 
     # Sort careers from highest to lowest match
     recommendations.sort(
         key=lambda career: career["match_percentage"],
-        reverse=True
+        reverse=True,
     )
 
     # Return the requested number of recommendations
     return {
-        "recommendations": recommendations[:top_n]
+        "recommendations": recommendations[:top_n],
     }
