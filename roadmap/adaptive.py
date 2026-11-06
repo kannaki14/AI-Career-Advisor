@@ -3,19 +3,33 @@ def analyze_learning_progress(roadmap):
 
     # Read the topics from the supplied roadmap.
     topics = roadmap.get("topics", [])
+    if not isinstance(topics, list):
+        topics = []
 
     # Store skills that need extra attention and suggested next steps.
+    # Only include skills that appear on topics with Failed or In Progress.
     struggling_skills = []
     next_actions = []
 
     for topic in topics:
+        if not isinstance(topic, dict):
+            continue
+
         # Use default values if a topic does not contain these fields.
         skill = topic.get("skill", "Unknown skill")
         status = topic.get("status", "Pending")
 
+        if not isinstance(skill, str) or not skill.strip():
+            continue
+        if not isinstance(status, str):
+            continue
+
+        skill = skill.strip()
+
         # A Failed topic is considered a struggling skill.
         if status == "Failed":
-            struggling_skills.append(skill)
+            if skill not in struggling_skills:
+                struggling_skills.append(skill)
 
             # Recommend reviewing the basics and practicing again.
             next_actions.append({
@@ -42,7 +56,8 @@ def analyze_learning_progress(roadmap):
 
     # Count topics that have been marked Completed.
     completed_count = sum(
-        topic.get("status") == "Completed" for topic in topics
+        isinstance(topic, dict) and topic.get("status") == "Completed"
+        for topic in topics
     )
 
     # Calculate progress percentage safely when topics are available.

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getUserStorageItem } from '../utils/sessionUser';
 import {
   ArrowRight,
   Brain,
@@ -18,7 +19,7 @@ function SkillProfile() {
   const [skillProfile, setSkillProfile] = useState(null);
 
   useEffect(() => {
-    const savedProfile = localStorage.getItem('skillProfile');
+    const savedProfile = getUserStorageItem('skillProfile');
 
     if (savedProfile) {
       try {

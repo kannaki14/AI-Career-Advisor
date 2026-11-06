@@ -5,36 +5,138 @@ import {
   ArrowLeft,
   BriefcaseBusiness,
   CheckCircle2,
+  Compass,
   LoaderCircle,
   RefreshCw,
   Target,
   TrendingUp,
 } from 'lucide-react';
 
+import {
+  API_BASE,
+  asRecommendationList,
+  getLoggedInUserId,
+  getUserStorageItem,
+  setUserStorageItem,
+} from '../utils/sessionUser';
+
+const RECOMMENDATIONS_STORAGE_KEY = 'careerRecommendations';
+const SELECTED_CAREER_KEY = 'selectedCareer';
+
 function CareerRecommendations() {
   const navigate = useNavigate();
 
   const [profile, setProfile] = useState(null);
-  const [interests, setInterests] = useState('');
   const [recommendations, setRecommendations] = useState([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    try {
-      const savedProfile = localStorage.getItem('skillProfile');
+    let isMounted = true;
 
-      if (savedProfile) {
-        setProfile(JSON.parse(savedProfile));
-      } else {
-        setError('Please upload your resume before exploring careers.');
+    const loadSavedData = async () => {
+      // Load the logged-in user's skill profile.
+      try {
+        const savedProfile = getUserStorageItem('skillProfile');
+
+        if (!savedProfile) {
+          if (isMounted) {
+            setError('Please upload your resume before exploring careers.');
+          }
+        } else {
+          const parsedProfile = JSON.parse(savedProfile);
+
+          if (isMounted) {
+            setProfile(parsedProfile);
+          }
+        }
+      } catch {
+        if (isMounted) {
+          setError(
+            'Unable to read your saved skill profile. Please upload your resume again.'
+          );
+        }
       }
-    } catch {
-      setError(
-        'Unable to read your saved skill profile. Please upload your resume again.'
-      );
-    }
+
+      const userId = getLoggedInUserId();
+
+      if (!userId) {
+        if (isMounted) {
+          setError('Please log in again to access your career recommendations.');
+        }
+        return;
+      }
+
+      // Load this user's recommendations from the backend.
+      try {
+        const response = await fetch(
+          `${API_BASE}/recommendations/${userId}`
+        );
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch saved recommendations.');
+        }
+
+        const data = await response.json();
+        const saved = asRecommendationList(data);
+
+        if (!isMounted) return;
+
+        setRecommendations(saved);
+
+        setUserStorageItem(
+          RECOMMENDATIONS_STORAGE_KEY,
+          JSON.stringify(saved)
+        );
+      } catch {
+        // Use this user's local cache if the backend is unavailable.
+        try {
+          const savedRecommendations = getUserStorageItem(
+            RECOMMENDATIONS_STORAGE_KEY
+          );
+
+          if (savedRecommendations && isMounted) {
+            const parsed = JSON.parse(savedRecommendations);
+
+            if (Array.isArray(parsed)) {
+              setRecommendations(parsed);
+            }
+          }
+        } catch {
+          // Ignore corrupted recommendation cache.
+        }
+      }
+    };
+
+    loadSavedData();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
+
+  const exploreCareer = (career) => {
+    if (
+      !career ||
+      typeof career.career !== 'string' ||
+      !career.career.trim()
+    ) {
+      setError('That career recommendation is missing required details.');
+      return;
+    }
+
+    const saved = setUserStorageItem(
+      SELECTED_CAREER_KEY,
+      JSON.stringify(career)
+    );
+
+    if (!saved) {
+      setError('Please log in again before selecting a career.');
+      return;
+    }
+
+    navigate('/explore-career', { state: { career } });
+  };
 
   const technicalSkills = Array.isArray(profile?.technical_skills)
     ? profile.technical_skills.filter(
@@ -45,6 +147,13 @@ function CareerRecommendations() {
   const getRecommendations = async () => {
     setError('');
     setRecommendations([]);
+
+    const userId = getLoggedInUserId();
+
+    if (!userId) {
+      setError('Please log in again before requesting recommendations.');
+      return;
+    }
 
     if (!profile) {
       setError('Please upload and analyze your resume first.');
@@ -61,32 +170,28 @@ function CareerRecommendations() {
     setLoading(true);
 
     try {
+      // Generate recommendations using resume skills only.
       const requestBody = {
+        user_id: userId,
         technical_skills: technicalSkills,
-        interests: interests
-          .split(',')
-          .map((interest) => interest.trim())
-          .filter(Boolean),
         resume_text: '',
         top_n: 5,
       };
 
-      const response = await fetch(
-        'http://127.0.0.1:8000/recommendations',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(requestBody),
-        }
-      );
+      const response = await fetch(`${API_BASE}/recommendations`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
+      });
 
       const data = await response.json().catch(() => ({}));
 
       if (!response.ok) {
         throw new Error(
-          data.detail || `Recommendation request failed (${response.status}).`
+          data.detail ||
+            `Recommendation request failed (${response.status}).`
         );
       }
 
@@ -97,6 +202,17 @@ function CareerRecommendations() {
       }
 
       setRecommendations(data.recommendations);
+
+      const saved = setUserStorageItem(
+        RECOMMENDATIONS_STORAGE_KEY,
+        JSON.stringify(data.recommendations)
+      );
+
+      if (!saved) {
+        throw new Error(
+          'Recommendations were generated, but could not be saved. Please log in again.'
+        );
+      }
     } catch (err) {
       setError(
         err.message ||
@@ -135,14 +251,17 @@ function CareerRecommendations() {
         </div>
 
         <h1>Career Recommendations</h1>
+
         <p>
-          Discover career paths based on your resume skills and interests,
-          and identify the skills you can improve for each career.
+          Discover career paths based on your resume skills and identify
+          the skills you can improve for each career.
         </p>
       </div>
 
       <div className="card" style={{ marginBottom: '1.5rem' }}>
-        <h2 style={{ marginBottom: '0.5rem' }}>Your technical skills</h2>
+        <h2 style={{ marginBottom: '0.5rem' }}>
+          Your technical skills
+        </h2>
 
         <p style={{ color: 'var(--color-text-muted)' }}>
           These skills were extracted from your uploaded resume.
@@ -175,44 +294,12 @@ function CareerRecommendations() {
           <p>No technical skills available yet.</p>
         )}
 
-        <div style={{ marginTop: '1.5rem' }}>
-          <label
-            htmlFor="career-interests"
-            style={{
-              display: 'block',
-              fontWeight: '600',
-              marginBottom: '0.5rem',
-            }}
-          >
-            Career interests (optional)
-          </label>
-
-          <input
-            id="career-interests"
-            type="text"
-            value={interests}
-            onChange={(event) => setInterests(event.target.value)}
-            placeholder="e.g. Data Analysis, Web Development"
-            style={{ width: '100%', maxWidth: '600px' }}
-          />
-
-          <p
-            style={{
-              color: 'var(--color-text-muted)',
-              fontSize: '0.875rem',
-              marginTop: '0.5rem',
-            }}
-          >
-            Enter one or more interests, separated by commas.
-          </p>
-        </div>
-
         <button
           type="button"
           className="btn btn-primary"
           onClick={getRecommendations}
           disabled={loading || !profile || technicalSkills.length === 0}
-          style={{ marginTop: '1rem' }}
+          style={{ marginTop: '1.5rem' }}
         >
           {loading ? (
             <>
@@ -261,6 +348,7 @@ function CareerRecommendations() {
         <div style={{ marginBottom: '2rem' }}>
           <div style={{ marginBottom: '1rem' }}>
             <h2>Recommended careers for you</h2>
+
             <p style={{ color: 'var(--color-text-muted)' }}>
               Compare each career's match score and the skills you may need
               to develop.
@@ -282,6 +370,7 @@ function CareerRecommendations() {
                 : missingSkills;
 
               const parsedMatch = Number(career.match_percentage);
+
               const match = Number.isFinite(parsedMatch)
                 ? Math.max(0, Math.min(100, parsedMatch))
                 : 0;
@@ -450,6 +539,16 @@ function CareerRecommendations() {
                       for this career.
                     </p>
                   )}
+
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={() => exploreCareer(career)}
+                    style={{ marginTop: '1.25rem' }}
+                  >
+                    <Compass size={17} />
+                    Explore Career
+                  </button>
                 </article>
               );
             })}
@@ -475,7 +574,8 @@ function CareerRecommendations() {
           <h2>Ready to explore your career options?</h2>
 
           <p style={{ color: 'var(--color-text-muted)' }}>
-            Select your interests if you wish, then click Find My Careers.
+            Click Find My Careers to discover suitable career paths based
+            on your skills.
           </p>
         </div>
       )}

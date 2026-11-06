@@ -1,12 +1,95 @@
 
-import { useState } from 'react';
-
+import { useEffect, useState } from 'react';
+import {
+  API_BASE,
+  asRecommendationList,
+  getLoggedInUserId,
+  getUserStorageItem,
+} from '../utils/sessionUser';
 function SkillGap() {
   const [career, setCareer] = useState('Data Analyst');
-  const [currentSkills, setCurrentSkills] = useState('Python, Excel');
-  const [requiredSkills, setRequiredSkills] = useState(
-    'Python, SQL, Excel, Power BI'
-  );
+  const [careerOptions, setCareerOptions] = useState([
+    'Data Analyst',
+    'Data Scientist',
+    'Machine Learning Engineer',
+    'Web Developer',
+  ]);
+  const [currentSkills, setCurrentSkills] = useState('');
+  const [requiredSkills, setRequiredSkills] = useState('');
+  const [recommendations, setRecommendations] = useState([]);
+
+  useEffect(() => {
+    try {
+      const savedProfile = getUserStorageItem('skillProfile');
+      if (savedProfile) {
+        const profile = JSON.parse(savedProfile);
+        const skills = Array.isArray(profile?.technical_skills)
+          ? profile.technical_skills.filter(
+              (skill) => typeof skill === 'string' && skill.trim()
+            )
+          : [];
+        if (skills.length > 0) {
+          setCurrentSkills(skills.join(', '));
+        }
+      }
+    } catch {
+      // Leave the current-skills field empty when the profile cannot be read.
+    }
+
+    const userId = getLoggedInUserId();
+    if (!userId) return;
+
+    fetch(`${API_BASE}/recommendations/${userId}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch saved recommendations');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        const saved = asRecommendationList(data);
+        setRecommendations(saved);
+
+        const careers = saved
+          .map((item) =>
+            typeof item?.career === 'string' ? item.career.trim() : ''
+          )
+          .filter(Boolean);
+
+        if (careers.length > 0) {
+          setCareerOptions([...new Set(careers)]);
+          setCareer((current) =>
+            careers.includes(current) ? current : careers[0]
+          );
+        }
+      })
+      .catch(() => {
+        // Keep the existing career list when saved recommendations are unavailable.
+      });
+  }, []);
+
+  useEffect(() => {
+    const selected = recommendations.find(
+      (item) =>
+        item &&
+        typeof item === 'object' &&
+        typeof item.career === 'string' &&
+        item.career.trim().toLowerCase() === career.trim().toLowerCase()
+    );
+
+    if (!selected) return;
+
+    const required = [
+      ...(Array.isArray(selected.matched_skills) ? selected.matched_skills : []),
+      ...(Array.isArray(selected.missing_skills) ? selected.missing_skills : []),
+    ]
+      .filter((skill) => typeof skill === 'string' && skill.trim())
+      .map((skill) => skill.trim());
+
+    if (required.length > 0) {
+      setRequiredSkills([...new Set(required)].join(', '));
+    }
+  }, [career, recommendations]);
 
   const current = currentSkills
     .split(',')
@@ -34,10 +117,9 @@ function SkillGap() {
         onChange={(event) => setCareer(event.target.value)}
         style={{ display: 'block', margin: '8px 0 20px', padding: '10px', width: '100%' }}
       >
-        <option>Data Analyst</option>
-        <option>Data Scientist</option>
-        <option>Machine Learning Engineer</option>
-        <option>Web Developer</option>
+        {careerOptions.map((option) => (
+          <option key={option}>{option}</option>
+        ))}
       </select>
 
       <label htmlFor="currentSkills">Your Current Skills (comma-separated)</label>

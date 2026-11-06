@@ -4,6 +4,7 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
 from roadmap.adaptive import analyze_learning_progress
+from roadmap.ai_generator import generate_ai_learning_roadmap
 from roadmap.generator import generate_learning_roadmap
 from roadmap.storage import (
     save_roadmap,
@@ -23,7 +24,7 @@ class RoadmapRequest(BaseModel):
     missing_skills: list[str] = Field(default_factory=list)
     skills_to_improve: list[str] = Field(default_factory=list)
     daily_study_minutes: int = Field(default=60, gt=0, le=1440)
-    user_id: int | None = Field(default=None, gt=0)
+    user_id: int = Field(gt=0)
 
 
 class TopicStatusRequest(BaseModel):
@@ -36,13 +37,23 @@ class TopicStatusRequest(BaseModel):
 def create_roadmap(request: RoadmapRequest):
     """Generate a roadmap, save it, and return its ID and details."""
     try:
-        # Generate a learning plan using the career and skill gaps.
-        roadmap = generate_learning_roadmap(
-            career=request.career,
-            missing_skills=request.missing_skills,
-            skills_to_improve=request.skills_to_improve,
-            daily_study_minutes=request.daily_study_minutes,
-        )
+        generation_method = "ai"
+        try:
+            # Prefer a Gemini-personalized roadmap when the model is available.
+            roadmap = generate_ai_learning_roadmap(
+                career=request.career,
+                missing_skills=request.missing_skills,
+                skills_to_improve=request.skills_to_improve,
+                daily_study_minutes=request.daily_study_minutes,
+            )
+        except Exception:
+            generation_method = "fallback"
+            roadmap = generate_learning_roadmap(
+                career=request.career,
+                missing_skills=request.missing_skills,
+                skills_to_improve=request.skills_to_improve,
+                daily_study_minutes=request.daily_study_minutes,
+            )
 
         # Save the generated roadmap for later retrieval and updates.
         roadmap_id = save_roadmap(roadmap, request.user_id)
@@ -52,6 +63,7 @@ def create_roadmap(request: RoadmapRequest):
             "message": "Learning roadmap generated and saved successfully",
             "roadmap_id": roadmap_id,
             "roadmap": roadmap,
+            "generation_method": generation_method,
         }
     except ValueError as exc:
         # Return a client error when the input is invalid.
@@ -59,15 +71,16 @@ def create_roadmap(request: RoadmapRequest):
 
 
 @router.get("/{roadmap_id}")
-def read_roadmap(roadmap_id: int):
-    """Retrieve a saved roadmap using its ID."""
+def read_roadmap(roadmap_id: int, user_id: int):
+    """Retrieve a saved roadmap belonging to a specific user."""
 
-    # Load the requested roadmap from the database.
-    saved = get_roadmap(roadmap_id)
+    saved = get_roadmap(roadmap_id, user_id)
 
-    # Return 404 when the roadmap ID does not exist.
     if saved is None:
-        raise HTTPException(status_code=404, detail="Roadmap not found")
+        raise HTTPException(
+            status_code=404,
+            detail="Roadmap not found"
+        )
 
     return saved
 
@@ -77,51 +90,44 @@ def change_topic_status(
     roadmap_id: int,
     topic_id: int,
     request: TopicStatusRequest,
+    user_id: int,
 ):
     """Update a topic status and return the updated roadmap."""
+
     try:
-        # Update only the selected topic in the selected roadmap.
         saved = update_topic_status(
             roadmap_id,
             topic_id,
             request.status,
+            user_id,
         )
     except LookupError as exc:
-        # Return 404 when the topic ID is not found.
         raise HTTPException(status_code=404, detail=str(exc))
     except ValueError as exc:
-        # Return 400 when the requested status is invalid.
         raise HTTPException(status_code=400, detail=str(exc))
 
-    # Return 404 when the roadmap itself does not exist.
     if saved is None:
         raise HTTPException(status_code=404, detail="Roadmap not found")
 
-    # Include the update message and the latest saved roadmap.
     return {
         "message": "Topic status updated successfully",
         **saved,
     }
 
-
 @router.get("/{roadmap_id}/progress")
-def read_learning_progress(roadmap_id: int):
+def read_learning_progress(roadmap_id: int, user_id: int):
     """Return progress statistics and adaptive learning suggestions."""
 
-    # Retrieve the roadmap before analyzing its learning progress.
-    saved = get_roadmap(roadmap_id)
+    saved = get_roadmap(roadmap_id, user_id)
 
-    # Return 404 when the requested roadmap does not exist.
     if saved is None:
         raise HTTPException(
             status_code=404,
             detail="Roadmap not found",
         )
 
-    # Analyze completed, failed, and in-progress topics.
     progress = analyze_learning_progress(saved["roadmap"])
 
-    # Return roadmap information along with progress and next actions.
     return {
         "roadmap_id": roadmap_id,
         "career": saved["career"],

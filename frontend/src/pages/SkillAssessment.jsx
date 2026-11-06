@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import {
+  getUserStorageItem,
+  setUserStorageItem,
+} from '../utils/sessionUser';
 
 function SkillAssessment() {
   const [questions, setQuestions] = useState([]);
@@ -11,7 +15,7 @@ function SkillAssessment() {
   useEffect(() => {
     const loadAssessment = async () => {
       try {
-        const storedProfile = localStorage.getItem('skillProfile');
+        const storedProfile = getUserStorageItem('skillProfile');
 
         if (!storedProfile) {
           throw new Error(
@@ -141,10 +145,14 @@ function SkillAssessment() {
       };
     });
 
-    localStorage.setItem(
+    const saved = setUserStorageItem(
       'assessmentScores',
       JSON.stringify(scoresWithPercentage)
     );
+
+    if (!saved) {
+      throw new Error('Please log in again before saving assessment results.');
+    }
 
     setCompleted(true);
   };
@@ -259,7 +267,7 @@ function SkillAssessment() {
 
   if (completed) {
     const assessmentScores = JSON.parse(
-      localStorage.getItem('assessmentScores') || '{}'
+      getUserStorageItem('assessmentScores') || '{}'
     );
 
     const totalCorrect = Object.values(

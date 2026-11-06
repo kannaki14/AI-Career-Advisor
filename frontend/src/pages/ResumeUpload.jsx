@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { setUserStorageItem } from '../utils/sessionUser';
 import { Upload, FileText, ArrowLeft } from 'lucide-react';
 
 function ResumeUpload() {
@@ -56,7 +57,11 @@ function ResumeUpload() {
         throw new Error(data.detail || 'Resume upload failed.');
       }
 
-      localStorage.setItem('skillProfile', JSON.stringify(data));
+      const saved = setUserStorageItem('skillProfile', JSON.stringify(data));
+
+      if (!saved) {
+        throw new Error('Please log in again before saving your profile.');
+}
 
       navigate('/skill-profile');
     } catch (error) {

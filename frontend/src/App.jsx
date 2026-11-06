@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -7,6 +8,7 @@ import ResumeUpload from './pages/ResumeUpload';
 import SkillProfile from './pages/SkillProfile';
 import SkillAssessment from './pages/SkillAssessment';
 import CareerRecommendations from './pages/CareerRecommendations';
+import ExploreCareer from './pages/ExploreCareer';
 import SkillGap from './pages/SkillGap';
 import LearningRoadmap from './pages/LearningRoadmap';
 function App() {
@@ -24,6 +26,7 @@ function App() {
   <Route path="/skill-profile" element={<SkillProfile />} />
   <Route path="/skill-assessment" element={<SkillAssessment />} />
   <Route path="/career-recommendations" element={<CareerRecommendations />} />
+  <Route path="/explore-career" element={<ExploreCareer />} />
   <Route path="/skill-gap" element={<SkillGap />} />
   <Route path="/learning-roadmap" element={<LearningRoadmap />} />
 </Routes>

@@ -51,8 +51,8 @@ def save_roadmap(roadmap, user_id=None):
         return cursor.lastrowid
 
 
-def get_roadmap(roadmap_id):
-    """Retrieve a saved roadmap using its unique ID."""
+def get_roadmap(roadmap_id, user_id):
+    """Retrieve a saved roadmap belonging to a specific user."""
     initialize_database()
 
     with get_connection() as connection:
@@ -60,23 +60,19 @@ def get_roadmap(roadmap_id):
             """
             SELECT id, user_id, career, roadmap_json, created_at
             FROM learning_roadmaps
-            WHERE id = ?
+            WHERE id = ? AND user_id = ?
             """,
-            (roadmap_id,),
+            (roadmap_id, user_id),
         ).fetchone()
 
-    # Return None when the requested roadmap does not exist.
     if row is None:
         return None
 
-    # Convert the database row into a dictionary.
-    # Convert the stored JSON string back into a Python object.
     result = dict(row)
     result["roadmap"] = json.loads(result.pop("roadmap_json"))
     return result
 
-
-def update_topic_status(roadmap_id, topic_id, status):
+def update_topic_status(roadmap_id, topic_id, status, user_id):
     """Update a topic status and recalculate roadmap progress."""
 
     # Reject any status outside the supported four values.
@@ -86,7 +82,7 @@ def update_topic_status(roadmap_id, topic_id, status):
         )
 
     # Retrieve only the roadmap identified by the supplied ID.
-    saved = get_roadmap(roadmap_id)
+    saved = get_roadmap(roadmap_id, user_id)
     if saved is None:
         return None
 
@@ -126,4 +122,4 @@ def update_topic_status(roadmap_id, topic_id, status):
         )
 
     # Return the latest saved roadmap after the update.
-    return get_roadmap(roadmap_id)
+    return get_roadmap(roadmap_id, user_id)
