@@ -40,7 +40,12 @@ def test_generate_roadmap():
 
 
 def test_generate_roadmap_uses_ai_when_available(monkeypatch):
-    def fake_ai(career, missing_skills, skills_to_improve=None, daily_study_minutes=60):
+    def fake_ai(
+        career,
+        missing_skills,
+        skills_to_improve=None,
+        daily_study_minutes=60,
+    ):
         return {
             "career": career.strip(),
             "created_date": date.today().isoformat(),
@@ -62,7 +67,10 @@ def test_generate_roadmap_uses_ai_when_available(monkeypatch):
             ],
         }
 
-    monkeypatch.setattr("roadmap.api.generate_ai_learning_roadmap", fake_ai)
+    monkeypatch.setattr(
+        "roadmap.api.generate_ai_learning_roadmap",
+        fake_ai,
+    )
 
     response = client.post(
         "/roadmap/generate",
@@ -99,12 +107,14 @@ def test_generate_roadmap_falls_back_when_gemini_fails():
 
 
 def test_topic_status_and_progress():
+    user_id = 11
+
     response = client.post(
         "/roadmap/generate",
         json={
             "career": "Test Analyst",
             "missing_skills": ["Python", "SQL"],
-            "user_id": 11,
+            "user_id": user_id,
         },
     )
 
@@ -113,7 +123,7 @@ def test_topic_status_and_progress():
 
     # Mark the first topic as Completed.
     response = client.patch(
-        f"/roadmap/{roadmap_id}/topics/1",
+        f"/roadmap/{roadmap_id}/topics/1?user_id={user_id}",
         json={"status": "Completed"},
     )
 
@@ -121,14 +131,16 @@ def test_topic_status_and_progress():
 
     # Mark the second topic as Failed.
     response = client.patch(
-        f"/roadmap/{roadmap_id}/topics/2",
+        f"/roadmap/{roadmap_id}/topics/2?user_id={user_id}",
         json={"status": "Failed"},
     )
 
     assert response.status_code == 200
 
     # Verify progress is 50%.
-    response = client.get(f"/roadmap/{roadmap_id}/progress")
+    response = client.get(
+        f"/roadmap/{roadmap_id}/progress?user_id={user_id}"
+    )
 
     assert response.status_code == 200
     data = response.json()
@@ -143,12 +155,14 @@ def test_topic_status_and_progress():
 
 
 def test_invalid_status():
+    user_id = 12
+
     response = client.post(
         "/roadmap/generate",
         json={
             "career": "Test Analyst",
             "missing_skills": ["Python"],
-            "user_id": 12,
+            "user_id": user_id,
         },
     )
 
@@ -156,7 +170,7 @@ def test_invalid_status():
     roadmap_id = response.json()["roadmap_id"]
 
     response = client.patch(
-        f"/roadmap/{roadmap_id}/topics/1",
+        f"/roadmap/{roadmap_id}/topics/1?user_id={user_id}",
         json={"status": "Unknown"},
     )
 
@@ -164,12 +178,14 @@ def test_invalid_status():
 
 
 def test_unknown_topic_returns_404():
+    user_id = 13
+
     response = client.post(
         "/roadmap/generate",
         json={
             "career": "Test Analyst",
             "missing_skills": ["Python"],
-            "user_id": 13,
+            "user_id": user_id,
         },
     )
 
@@ -177,7 +193,7 @@ def test_unknown_topic_returns_404():
     roadmap_id = response.json()["roadmap_id"]
 
     response = client.patch(
-        f"/roadmap/{roadmap_id}/topics/999",
+        f"/roadmap/{roadmap_id}/topics/999?user_id={user_id}",
         json={"status": "Completed"},
     )
 
@@ -186,6 +202,8 @@ def test_unknown_topic_returns_404():
 
 def test_generate_roadmap_is_career_specific():
     """Career selection should tailor and persist the selected career name."""
+    user_id = 30
+
     response = client.post(
         "/roadmap/generate",
         json={
@@ -193,7 +211,7 @@ def test_generate_roadmap_is_career_specific():
             "missing_skills": ["React", "CSS"],
             "skills_to_improve": ["JavaScript"],
             "daily_study_minutes": 45,
-            "user_id": 30,
+            "user_id": user_id,
         },
     )
 
@@ -209,7 +227,10 @@ def test_generate_roadmap_is_career_specific():
         "CSS",
     ]
 
-    saved = client.get(f"/roadmap/{data['roadmap_id']}")
+    saved = client.get(
+        f"/roadmap/{data['roadmap_id']}?user_id={user_id}"
+    )
+
     assert saved.status_code == 200
     saved_data = saved.json()
     assert saved_data["career"] == "Frontend Developer"
@@ -217,12 +238,13 @@ def test_generate_roadmap_is_career_specific():
 
 
 def test_generate_roadmap_accepts_legacy_payload_without_skills_to_improve():
-    """Existing clients that omit skills_to_improve must keep working."""
+    """Omitting skills_to_improve should remain supported."""
     response = client.post(
         "/roadmap/generate",
         json={
             "career": "Data Analyst",
             "missing_skills": ["SQL"],
+            "user_id": 33,
         },
     )
 
@@ -242,6 +264,7 @@ def test_different_careers_produce_distinct_saved_roadmaps():
             "user_id": 31,
         },
     )
+
     second = client.post(
         "/roadmap/generate",
         json={
@@ -260,12 +283,16 @@ def test_different_careers_produce_distinct_saved_roadmaps():
     assert first_data["roadmap_id"] != second_data["roadmap_id"]
     assert first_data["roadmap"]["career"] == "Backend Developer"
     assert second_data["roadmap"]["career"] == "Data Scientist"
-    assert [topic["skill"] for topic in first_data["roadmap"]["topics"]] != [
+    assert [
+        topic["skill"] for topic in first_data["roadmap"]["topics"]
+    ] != [
         topic["skill"] for topic in second_data["roadmap"]["topics"]
     ]
 
 
 def test_full_stack_generate_orders_skills_and_progress_without_invented_struggle():
+    user_id = 40
+
     response = client.post(
         "/roadmap/generate",
         json={
@@ -281,7 +308,7 @@ def test_full_stack_generate_orders_skills_and_progress_without_invented_struggl
                 "JavaScript",
             ],
             "daily_study_minutes": 120,
-            "user_id": 40,
+            "user_id": user_id,
         },
     )
 
@@ -299,13 +326,18 @@ def test_full_stack_generate_orders_skills_and_progress_without_invented_struggl
         "REST APIs",
         "SQL",
     ]
+
     assert roadmap["estimated_total_hours"] == sum(
         topic["estimated_hours"] for topic in roadmap["topics"]
     )
+
     assert roadmap["estimated_days"] == 22
     assert roadmap["daily_study_minutes"] == 120
 
-    progress_response = client.get(f"/roadmap/{data['roadmap_id']}/progress")
+    progress_response = client.get(
+        f"/roadmap/{data['roadmap_id']}/progress?user_id={user_id}"
+    )
+
     assert progress_response.status_code == 200
     progress = progress_response.json()
 

@@ -16,9 +16,34 @@ def load_careers():
         return json.load(file)
 
 
+def normalize_skill(skill):
+    """Normalize skill names and common aliases."""
+    normalized = skill.strip().lower()
+
+    aliases = {
+        "microsoft excel": "excel",
+        "ms excel": "excel",
+        "js": "javascript",
+        "nodejs": "node.js",
+        "rest api": "rest apis",
+        "restful api": "rest apis",
+    }
+
+    return aliases.get(normalized, normalized)
+
+
 def calculate_skill_match(user_skills, required_skills):
-    user_skills = {skill.strip().lower() for skill in user_skills}
-    required_skills = {skill.strip().lower() for skill in required_skills}
+    user_skills = {
+        normalize_skill(skill)
+        for skill in (user_skills or [])
+        if isinstance(skill, str) and skill.strip()
+    }
+
+    required_skills = {
+        normalize_skill(skill)
+        for skill in (required_skills or [])
+        if isinstance(skill, str) and skill.strip()
+    }
 
     matched_skills = user_skills.intersection(required_skills)
     missing_skills = required_skills.difference(user_skills)
@@ -31,7 +56,7 @@ def calculate_skill_match(user_skills, required_skills):
     return {
         "matched_skills": sorted(matched_skills),
         "missing_skills": sorted(missing_skills),
-        "match_percentage": round(match_percentage, 2)
+        "match_percentage": round(match_percentage, 2),
     }
 
 
@@ -43,7 +68,7 @@ def analyze_skill_gap(user_skills, required_skills):
         "matched_skills": result["matched_skills"],
         "missing_skills": missing,
         "skills_to_improve": missing.copy(),
-        "match_percentage": result["match_percentage"]
+        "match_percentage": result["match_percentage"],
     }
 
 
@@ -52,8 +77,17 @@ def get_skills_to_improve(user_skills, required_skills):
 
 
 def calculate_interest_match(user_interests, career_interests):
-    user_interests = {item.strip().lower() for item in user_interests}
-    career_interests = {item.strip().lower() for item in career_interests}
+    user_interests = {
+        item.strip().lower()
+        for item in (user_interests or [])
+        if isinstance(item, str) and item.strip()
+    }
+
+    career_interests = {
+        item.strip().lower()
+        for item in (career_interests or [])
+        if isinstance(item, str) and item.strip()
+    }
 
     matched = user_interests.intersection(career_interests)
 
@@ -64,7 +98,7 @@ def calculate_interest_match(user_interests, career_interests):
 
     return {
         "matched_interests": sorted(matched),
-        "interest_percentage": round(percentage, 2)
+        "interest_percentage": round(percentage, 2),
     }
 
 
@@ -75,7 +109,7 @@ def extract_interests(resume_text):
     match = re.search(
         r"\bINTERESTS\b\s*:?\s*(.*?)(?=\n\s*(?:SKILLS|EDUCATION|EXPERIENCE|PROJECTS|CERTIFICATIONS|TECHNICAL SKILLS)\s*:?\s*(?:\n|$)|$)",
         resume_text,
-        re.IGNORECASE | re.DOTALL
+        re.IGNORECASE | re.DOTALL,
     )
 
     if not match:
@@ -85,9 +119,9 @@ def extract_interests(resume_text):
     interests = re.split(r"[,;\n]", section)
 
     return [
-        item.strip(" \t-\u2022")
+        item.strip(" \t-•")
         for item in interests
-        if item.strip(" \t-\u2022")
+        if item.strip(" \t-•")
     ]
 
 
@@ -97,7 +131,7 @@ def _career_document(career):
         career["career"],
         career["category"],
         " ".join(career.get("required_skills", [])),
-        " ".join(career.get("related_interests", []))
+        " ".join(career.get("related_interests", [])),
     ])
 
 
@@ -106,11 +140,13 @@ def calculate_similarity_scores(user_skills, user_interests, careers):
     Compare the user's profile with career documents using TF-IDF
     vectors and cosine similarity.
 
-    Returns similarity scores on a 0–100 scale.
+    Returns similarity scores on a 0-100 scale.
     """
-    profile_text = " ".join(user_skills + user_interests).strip()
+    profile_text = " ".join(
+        (user_skills or []) + (user_interests or [])
+    ).strip()
 
-    if not profile_text:
+    if not profile_text or not careers:
         return {career["id"]: 0.0 for career in careers}
 
     career_documents = [_career_document(career) for career in careers]
@@ -118,10 +154,9 @@ def calculate_similarity_scores(user_skills, user_interests, careers):
     vectorizer = TfidfVectorizer(
         lowercase=True,
         ngram_range=(1, 2),
-        stop_words="english"
+        stop_words="english",
     )
 
-    # Fit TF-IDF to the career descriptions and transform the user profile.
     career_vectors = vectorizer.fit_transform(career_documents)
     profile_vector = vectorizer.transform([profile_text])
 
@@ -134,16 +169,37 @@ def calculate_similarity_scores(user_skills, user_interests, careers):
 
 
 def recommend_careers(user_skills, user_interests=None, top_n=5):
+    if (
+        not isinstance(top_n, int)
+        or isinstance(top_n, bool)
+        or top_n < 1
+    ):
+        raise ValueError("top_n must be a positive integer")
+
+    if user_skills is None:
+        user_skills = []
+
     if user_interests is None:
         user_interests = []
 
+    # Keep only valid text values.
+    user_skills = [
+        skill for skill in user_skills
+        if isinstance(skill, str) and skill.strip()
+    ]
+
+    user_interests = [
+        interest for interest in user_interests
+        if isinstance(interest, str) and interest.strip()
+    ]
+
     careers = load_careers()
 
-    # New NLP similarity score.
+    # Preserve the existing TF-IDF similarity functionality.
     similarity_scores = calculate_similarity_scores(
         user_skills,
         user_interests,
-        careers
+        careers,
     )
 
     recommendations = []
@@ -151,16 +207,15 @@ def recommend_careers(user_skills, user_interests=None, top_n=5):
     for career in careers:
         skill_result = calculate_skill_match(
             user_skills,
-            career["required_skills"]
+            career.get("required_skills", []),
         )
 
         interest_result = calculate_interest_match(
             user_interests,
-            career.get("related_interests", [])
+            career.get("related_interests", []),
         )
 
-        # Preserve the original score for compatibility with existing tests
-        # and the frontend, while adding the ML/NLP score separately.
+        # Preserve the existing 70% skill + 30% interest score.
         original_score = (
             skill_result["match_percentage"] * 0.7
             + interest_result["interest_percentage"] * 0.3
@@ -175,16 +230,16 @@ def recommend_careers(user_skills, user_interests=None, top_n=5):
             "matched_skills": skill_result["matched_skills"],
             "missing_skills": skill_result["missing_skills"],
             "skills_to_improve": skill_result["missing_skills"].copy(),
-            "similarity_score": similarity_score
+            "similarity_score": similarity_score,
         })
 
-    # Rank by the original score first, then use NLP similarity to break ties.
+    # Rank by the existing match score, then use TF-IDF to break ties.
     recommendations.sort(
         key=lambda item: (
             item["match_percentage"],
-            item["similarity_score"]
+            item["similarity_score"],
         ),
-        reverse=True
+        reverse=True,
     )
 
     return {"recommendations": recommendations[:top_n]}
