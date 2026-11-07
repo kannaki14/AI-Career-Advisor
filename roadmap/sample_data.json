@@ -1,0 +1,24 @@
+
+{
+  "user_id": 1,
+  "career_recommendation": {
+    "career": "Data Analyst",
+    "category": "Data",
+    "match_percentage": 58.0,
+    "matched_skills": [
+      "python",
+      "sql",
+      "excel"
+    ],
+    "missing_skills": [
+      "power bi",
+      "tableau"
+    ],
+    "skills_to_improve": [
+      "power bi",
+      "tableau"
+    ]
+  },
+  "daily_study_minutes": 60,
+  "learning_goal": "Become job-ready as a Data Analyst"
+}

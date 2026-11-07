@@ -1,0 +1,2703 @@
+[
+  {
+    "id": 1,
+    "career": "Frontend Developer",
+    "category": "Technology & Software",
+    "required_skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Git",
+      "Responsive Design"
+    ],
+    "related_interests": [
+      "Web Development",
+      "Technology",
+      "Design",
+      "Programming",
+      "Building Websites"
+    ]
+  },
+  {
+    "id": 2,
+    "career": "Backend Developer",
+    "category": "Technology & Software",
+    "required_skills": [
+      "Python",
+      "Java",
+      "Node.js",
+      "REST APIs",
+      "SQL",
+      "Git",
+      "Database Management"
+    ],
+    "related_interests": [
+      "Programming",
+      "Backend Systems",
+      "Technology",
+      "Problem Solving",
+      "Databases"
+    ]
+  },
+  {
+    "id": 3,
+    "career": "Full Stack Developer",
+    "category": "Technology & Software",
+    "required_skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Git",
+      "React",
+      "Node.js",
+      "REST APIs",
+      "SQL"
+    ],
+    "related_interests": [
+      "Web Development",
+      "Programming",
+      "Technology",
+      "Building Applications",
+      "Problem Solving"
+    ]
+  },
+  {
+    "id": 4,
+    "career": "Data Analyst",
+    "category": "Technology & Software",
+    "required_skills": [
+      "Python",
+      "SQL",
+      "Excel",
+      "Statistics",
+      "Data Visualization",
+      "Power BI",
+      "Data Cleaning"
+    ],
+    "related_interests": [
+      "Data Analysis",
+      "Statistics",
+      "Business",
+      "Problem Solving",
+      "Technology"
+    ]
+  },
+  {
+    "id": 5,
+    "career": "Data Scientist",
+    "category": "Technology & Software",
+    "required_skills": [
+      "Python",
+      "Statistics",
+      "Machine Learning",
+      "SQL",
+      "Pandas",
+      "NumPy",
+      "Data Visualization",
+      "Mathematics"
+    ],
+    "related_interests": [
+      "Data Science",
+      "Statistics",
+      "Artificial Intelligence",
+      "Research",
+      "Problem Solving"
+    ]
+  },
+  {
+    "id": 6,
+    "career": "Machine Learning Engineer",
+    "category": "Technology & Software",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Deep Learning",
+      "TensorFlow",
+      "PyTorch",
+      "Scikit-learn",
+      "SQL",
+      "MLOps"
+    ],
+    "related_interests": [
+      "Machine Learning",
+      "Artificial Intelligence",
+      "Programming",
+      "Research",
+      "Technology"
+    ]
+  },
+  {
+    "id": 7,
+    "career": "AI Engineer",
+    "category": "Technology & Software",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Deep Learning",
+      "Neural Networks",
+      "Generative AI",
+      "APIs",
+      "TensorFlow",
+      "PyTorch"
+    ],
+    "related_interests": [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Technology",
+      "Problem Solving"
+    ]
+  },
+  {
+    "id": 8,
+    "career": "Cybersecurity Analyst",
+    "category": "Technology & Software",
+    "required_skills": [
+      "Network Security",
+      "Cybersecurity",
+      "Linux",
+      "SIEM",
+      "Threat Analysis",
+      "Incident Response",
+      "Firewalls",
+      "Security Monitoring"
+    ],
+    "related_interests": [
+      "Cybersecurity",
+      "Ethical Hacking",
+      "Network Security",
+      "Technology",
+      "Problem Solving"
+    ]
+  },
+  {
+    "id": 9,
+    "career": "Cloud Engineer",
+    "category": "Technology & Software",
+    "required_skills": [
+      "AWS",
+      "Azure",
+      "Cloud Computing",
+      "Linux",
+      "Networking",
+      "Docker",
+      "Terraform",
+      "Security"
+    ],
+    "related_interests": [
+      "Cloud Computing",
+      "Technology",
+      "Infrastructure",
+      "Networking",
+      "Automation"
+    ]
+  },
+  {
+    "id": 10,
+    "career": "DevOps Engineer",
+    "category": "Technology & Software",
+    "required_skills": [
+      "Linux",
+      "Docker",
+      "Kubernetes",
+      "CI/CD",
+      "Git",
+      "Jenkins",
+      "Cloud Computing",
+      "Terraform"
+    ],
+    "related_interests": [
+      "Cloud Computing",
+      "Automation",
+      "Infrastructure",
+      "Software Development",
+      "Technology"
+    ]
+  },
+  {
+    "id": 11,
+    "career": "UI/UX Designer",
+    "category": "Technology & Software",
+    "required_skills": [
+      "UI Design",
+      "UX Design",
+      "Figma",
+      "Wireframing",
+      "Prototyping",
+      "User Research",
+      "Visual Design",
+      "Usability Testing"
+    ],
+    "related_interests": [
+      "User Experience",
+      "Visual Design",
+      "Technology",
+      "Creativity",
+      "Design"
+    ]
+  },
+  {
+    "id": 12,
+    "career": "Mobile App Developer",
+    "category": "Technology & Software",
+    "required_skills": [
+      "Java",
+      "Kotlin",
+      "Swift",
+      "Flutter",
+      "React Native",
+      "Mobile UI",
+      "REST APIs",
+      "Git"
+    ],
+    "related_interests": [
+      "Mobile Technology",
+      "App Development",
+      "Programming",
+      "Technology",
+      "Design"
+    ]
+  },
+  {
+    "id": 13,
+    "career": "Software Engineer",
+    "category": "Technology & Software",
+    "required_skills": [
+      "Programming",
+      "Data Structures",
+      "Algorithms",
+      "Object-Oriented Programming",
+      "Git",
+      "Software Testing",
+      "Databases",
+      "Problem Solving"
+    ],
+    "related_interests": [
+      "Software Development",
+      "Programming",
+      "Technology",
+      "Problem Solving",
+      "Algorithms"
+    ]
+  },
+  {
+    "id": 14,
+    "career": "Database Administrator",
+    "category": "Technology & Software",
+    "required_skills": [
+      "SQL",
+      "Database Management",
+      "MySQL",
+      "PostgreSQL",
+      "Oracle",
+      "Database Security",
+      "Backup and Recovery",
+      "Performance Tuning"
+    ],
+    "related_interests": [
+      "Databases",
+      "Technology",
+      "Data Management",
+      "System Administration",
+      "Problem Solving"
+    ]
+  },
+  {
+    "id": 15,
+    "career": "Database Developer",
+    "category": "Technology & Software",
+    "required_skills": [
+      "SQL",
+      "Database Design",
+      "MySQL",
+      "PostgreSQL",
+      "Stored Procedures",
+      "Data Modeling",
+      "ETL",
+      "Performance Optimization"
+    ],
+    "related_interests": [
+      "Databases",
+      "Data Management",
+      "Programming",
+      "Data Modeling",
+      "Technology"
+    ]
+  },
+  {
+    "id": 16,
+    "career": "Business Analyst",
+    "category": "Business, Management & Consulting",
+    "required_skills": [
+      "Business Analysis",
+      "Requirements Gathering",
+      "SQL",
+      "Data Analysis",
+      "Excel",
+      "Process Modeling",
+      "Communication",
+      "Problem Solving"
+    ],
+    "related_interests": [
+      "Business",
+      "Problem Solving",
+      "Data Analysis",
+      "Technology",
+      "Process Improvement"
+    ]
+  },
+  {
+    "id": 17,
+    "career": "Business Intelligence Analyst",
+    "category": "Business, Management & Consulting",
+    "required_skills": [
+      "SQL",
+      "Power BI",
+      "Tableau",
+      "Data Analysis",
+      "Excel",
+      "Data Visualization",
+      "Business Intelligence",
+      "Reporting"
+    ],
+    "related_interests": [
+      "Business Intelligence",
+      "Data Analysis",
+      "Business",
+      "Data Visualization",
+      "Technology"
+    ]
+  },
+  {
+    "id": 18,
+    "career": "Data Engineer",
+    "category": "Technology & Software",
+    "required_skills": [
+      "Python",
+      "SQL",
+      "ETL",
+      "Data Warehousing",
+      "Apache Spark",
+      "Cloud Computing",
+      "Data Pipelines",
+      "Database Management"
+    ],
+    "related_interests": [
+      "Big Data",
+      "Data Engineering",
+      "Programming",
+      "Cloud Computing",
+      "Technology"
+    ]
+  },
+  {
+    "id": 19,
+    "career": "NLP Engineer",
+    "category": "Technology & Software",
+    "required_skills": [
+      "Python",
+      "Natural Language Processing",
+      "Machine Learning",
+      "Deep Learning",
+      "Transformers",
+      "PyTorch",
+      "TensorFlow",
+      "Text Processing"
+    ],
+    "related_interests": [
+      "Artificial Intelligence",
+      "Natural Language",
+      "Machine Learning",
+      "Programming",
+      "Linguistics"
+    ]
+  },
+  {
+    "id": 20,
+    "career": "Computer Vision Engineer",
+    "category": "Technology & Software",
+    "required_skills": [
+      "Python",
+      "Computer Vision",
+      "OpenCV",
+      "Deep Learning",
+      "CNN",
+      "PyTorch",
+      "TensorFlow",
+      "Image Processing"
+    ],
+    "related_interests": [
+      "Artificial Intelligence",
+      "Computer Vision",
+      "Image Processing",
+      "Robotics",
+      "Programming"
+    ]
+  },
+  {
+    "id": 21,
+    "career": "Security Engineer",
+    "category": "Technology & Software",
+    "required_skills": [
+      "Cybersecurity",
+      "Network Security",
+      "Linux",
+      "Cloud Security",
+      "Cryptography",
+      "Security Architecture",
+      "Vulnerability Assessment",
+      "Incident Response"
+    ],
+    "related_interests": [
+      "Cybersecurity",
+      "Cloud Security",
+      "Network Security",
+      "Technology",
+      "Risk Management"
+    ]
+  },
+  {
+    "id": 22,
+    "career": "Network Engineer",
+    "category": "Technology & Software",
+    "required_skills": [
+      "Computer Networking",
+      "TCP/IP",
+      "Routing",
+      "Switching",
+      "Cisco",
+      "Network Security",
+      "Linux",
+      "Troubleshooting"
+    ],
+    "related_interests": [
+      "Computer Networks",
+      "Networking",
+      "Infrastructure",
+      "Cybersecurity",
+      "Technology"
+    ]
+  },
+  {
+    "id": 23,
+    "career": "Systems Administrator",
+    "category": "Technology & Software",
+    "required_skills": [
+      "Linux",
+      "Windows Server",
+      "Networking",
+      "System Administration",
+      "Active Directory",
+      "Shell Scripting",
+      "Virtualization",
+      "Troubleshooting"
+    ],
+    "related_interests": [
+      "System Administration",
+      "Linux",
+      "Networking",
+      "Infrastructure",
+      "Technology"
+    ]
+  },
+  {
+    "id": 24,
+    "career": "Solutions Architect",
+    "category": "Technology & Software",
+    "required_skills": [
+      "Cloud Architecture",
+      "System Design",
+      "AWS",
+      "Azure",
+      "Networking",
+      "Databases",
+      "Security",
+      "Architecture Patterns"
+    ],
+    "related_interests": [
+      "Cloud Architecture",
+      "Technology",
+      "System Design",
+      "Infrastructure",
+      "Problem Solving"
+    ]
+  },
+  {
+    "id": 25,
+    "career": "Product Manager",
+    "category": "Business, Management & Consulting",
+    "required_skills": [
+      "Product Management",
+      "Market Research",
+      "Product Strategy",
+      "Agile",
+      "User Research",
+      "Data Analysis",
+      "Communication",
+      "Project Management"
+    ],
+    "related_interests": [
+      "Product Development",
+      "Business",
+      "Technology",
+      "User Experience",
+      "Strategy"
+    ]
+  },
+  {
+    "id": 26,
+    "career": "Project Manager",
+    "category": "Business, Management & Consulting",
+    "required_skills": [
+      "Project Management",
+      "Agile",
+      "Scrum",
+      "Risk Management",
+      "Planning",
+      "Communication",
+      "Leadership",
+      "Budget Management"
+    ],
+    "related_interests": [
+      "Project Management",
+      "Leadership",
+      "Planning",
+      "Teamwork",
+      "Business"
+    ]
+  },
+  {
+    "id": 27,
+    "career": "Operations Manager",
+    "category": "Business, Management & Consulting",
+    "required_skills": [
+      "Operations Management",
+      "Process Improvement",
+      "Leadership",
+      "Project Management",
+      "Data Analysis",
+      "Supply Chain",
+      "Budgeting",
+      "Problem Solving"
+    ],
+    "related_interests": [
+      "Operations",
+      "Leadership",
+      "Process Improvement",
+      "Business",
+      "Problem Solving"
+    ]
+  },
+  {
+    "id": 28,
+    "career": "Management Consultant",
+    "category": "Business, Management & Consulting",
+    "required_skills": [
+      "Business Strategy",
+      "Data Analysis",
+      "Market Research",
+      "Problem Solving",
+      "Financial Analysis",
+      "Communication",
+      "Presentation",
+      "Project Management"
+    ],
+    "related_interests": [
+      "Business Strategy",
+      "Problem Solving",
+      "Consulting",
+      "Research",
+      "Business"
+    ]
+  },
+  {
+    "id": 29,
+    "career": "Marketing Manager",
+    "category": "Business, Management & Consulting",
+    "required_skills": [
+      "Marketing Strategy",
+      "Digital Marketing",
+      "Market Research",
+      "Brand Management",
+      "SEO",
+      "Content Marketing",
+      "Analytics",
+      "Communication"
+    ],
+    "related_interests": [
+      "Marketing",
+      "Advertising",
+      "Branding",
+      "Digital Media",
+      "Creativity"
+    ]
+  },
+  {
+    "id": 30,
+    "career": "Sales Manager",
+    "category": "Business, Management & Consulting",
+    "required_skills": [
+      "Sales Management",
+      "Customer Relationship Management",
+      "Negotiation",
+      "Leadership",
+      "Communication",
+      "Sales Strategy",
+      "Market Analysis",
+      "CRM"
+    ],
+    "related_interests": [
+      "Sales",
+      "Business",
+      "Leadership",
+      "Customer Relationships",
+      "Negotiation"
+    ]
+  },
+  {
+    "id": 31,
+    "career": "Human Resources Specialist",
+    "category": "Business, Management & Consulting",
+    "required_skills": [
+      "Human Resources",
+      "Recruitment",
+      "Employee Relations",
+      "HR Policies",
+      "Payroll",
+      "Communication",
+      "Conflict Resolution",
+      "HR Software"
+    ],
+    "related_interests": [
+      "Human Resources",
+      "People Management",
+      "Recruitment",
+      "Employee Development",
+      "Communication"
+    ]
+  },
+  {
+    "id": 32,
+    "career": "Recruitment Specialist",
+    "category": "Business, Management & Consulting",
+    "required_skills": [
+      "Recruitment",
+      "Talent Acquisition",
+      "Interviewing",
+      "Candidate Screening",
+      "Communication",
+      "LinkedIn Recruiting",
+      "HR Software",
+      "Sourcing"
+    ],
+    "related_interests": [
+      "Recruitment",
+      "Talent Acquisition",
+      "Human Resources",
+      "Networking",
+      "Communication"
+    ]
+  },
+  {
+    "id": 33,
+    "career": "Digital Marketing Specialist",
+    "category": "Business, Management & Consulting",
+    "required_skills": [
+      "Digital Marketing",
+      "SEO",
+      "SEM",
+      "Social Media Marketing",
+      "Google Analytics",
+      "Content Marketing",
+      "Email Marketing",
+      "Advertising"
+    ],
+    "related_interests": [
+      "Digital Marketing",
+      "Social Media",
+      "Advertising",
+      "Content Creation",
+      "Analytics"
+    ]
+  },
+  {
+    "id": 34,
+    "career": "Market Research Analyst",
+    "category": "Business, Management & Consulting",
+    "required_skills": [
+      "Market Research",
+      "Data Analysis",
+      "Statistics",
+      "Survey Design",
+      "Excel",
+      "Data Visualization",
+      "Consumer Research",
+      "Report Writing"
+    ],
+    "related_interests": [
+      "Market Research",
+      "Consumer Behavior",
+      "Statistics",
+      "Data Analysis",
+      "Business"
+    ]
+  },
+  {
+    "id": 35,
+    "career": "Accountant",
+    "category": "Finance, Accounting & Banking",
+    "required_skills": [
+      "Accounting",
+      "Bookkeeping",
+      "Financial Statements",
+      "Excel",
+      "Taxation",
+      "Tally",
+      "Auditing",
+      "Financial Reporting"
+    ],
+    "related_interests": [
+      "Accounting",
+      "Finance",
+      "Numbers",
+      "Business",
+      "Financial Management"
+    ]
+  },
+  {
+    "id": 36,
+    "career": "Financial Analyst",
+    "category": "Finance, Accounting & Banking",
+    "required_skills": [
+      "Financial Analysis",
+      "Excel",
+      "Financial Modeling",
+      "Accounting",
+      "Data Analysis",
+      "Valuation",
+      "Financial Reporting",
+      "Forecasting"
+    ],
+    "related_interests": [
+      "Finance",
+      "Financial Analysis",
+      "Investing",
+      "Business",
+      "Numbers"
+    ]
+  },
+  {
+    "id": 37,
+    "career": "Investment Analyst",
+    "category": "Finance, Accounting & Banking",
+    "required_skills": [
+      "Investment Analysis",
+      "Financial Modeling",
+      "Valuation",
+      "Excel",
+      "Financial Markets",
+      "Accounting",
+      "Research",
+      "Risk Analysis"
+    ],
+    "related_interests": [
+      "Investing",
+      "Financial Markets",
+      "Finance",
+      "Research",
+      "Business"
+    ]
+  },
+  {
+    "id": 38,
+    "career": "Banking Associate",
+    "category": "Finance, Accounting & Banking",
+    "required_skills": [
+      "Banking Operations",
+      "Financial Products",
+      "Customer Service",
+      "Accounting",
+      "Financial Analysis",
+      "Compliance",
+      "Communication",
+      "Risk Management"
+    ],
+    "related_interests": [
+      "Banking",
+      "Finance",
+      "Customer Service",
+      "Business",
+      "Financial Products"
+    ]
+  },
+  {
+    "id": 39,
+    "career": "Credit Analyst",
+    "category": "Finance, Accounting & Banking",
+    "required_skills": [
+      "Credit Analysis",
+      "Financial Analysis",
+      "Accounting",
+      "Risk Assessment",
+      "Financial Statements",
+      "Excel",
+      "Loan Analysis",
+      "Research"
+    ],
+    "related_interests": [
+      "Finance",
+      "Risk Analysis",
+      "Banking",
+      "Numbers",
+      "Research"
+    ]
+  },
+  {
+    "id": 40,
+    "career": "Tax Consultant",
+    "category": "Finance, Accounting & Banking",
+    "required_skills": [
+      "Taxation",
+      "Income Tax",
+      "GST",
+      "Accounting",
+      "Tax Planning",
+      "Financial Reporting",
+      "Compliance",
+      "Excel"
+    ],
+    "related_interests": [
+      "Taxation",
+      "Accounting",
+      "Finance",
+      "Business",
+      "Regulations"
+    ]
+  },
+  {
+    "id": 41,
+    "career": "Auditor",
+    "category": "Finance, Accounting & Banking",
+    "required_skills": [
+      "Auditing",
+      "Accounting",
+      "Financial Statements",
+      "Internal Controls",
+      "Risk Assessment",
+      "Compliance",
+      "Excel",
+      "Financial Reporting"
+    ],
+    "related_interests": [
+      "Auditing",
+      "Accounting",
+      "Finance",
+      "Risk Management",
+      "Compliance"
+    ]
+  },
+  {
+    "id": 42,
+    "career": "Risk Analyst",
+    "category": "Finance, Accounting & Banking",
+    "required_skills": [
+      "Risk Management",
+      "Financial Analysis",
+      "Statistics",
+      "Data Analysis",
+      "Financial Modeling",
+      "Excel",
+      "Risk Assessment",
+      "Reporting"
+    ],
+    "related_interests": [
+      "Risk Management",
+      "Finance",
+      "Statistics",
+      "Data Analysis",
+      "Business"
+    ]
+  },
+  {
+    "id": 43,
+    "career": "Financial Planner",
+    "category": "Finance, Accounting & Banking",
+    "required_skills": [
+      "Financial Planning",
+      "Investment Planning",
+      "Tax Planning",
+      "Retirement Planning",
+      "Financial Analysis",
+      "Risk Management",
+      "Communication",
+      "Excel"
+    ],
+    "related_interests": [
+      "Financial Planning",
+      "Investing",
+      "Personal Finance",
+      "Finance",
+      "Helping People"
+    ]
+  },
+  {
+    "id": 44,
+    "career": "Insurance Analyst",
+    "category": "Finance, Accounting & Banking",
+    "required_skills": [
+      "Insurance",
+      "Risk Analysis",
+      "Financial Analysis",
+      "Underwriting",
+      "Statistics",
+      "Data Analysis",
+      "Compliance",
+      "Excel"
+    ],
+    "related_interests": [
+      "Insurance",
+      "Risk Management",
+      "Finance",
+      "Statistics",
+      "Data Analysis"
+    ]
+  },
+  {
+    "id": 45,
+    "career": "Graphic Designer",
+    "category": "Arts, Design & Creative",
+    "required_skills": [
+      "Graphic Design",
+      "Adobe Photoshop",
+      "Adobe Illustrator",
+      "Typography",
+      "Color Theory",
+      "Layout Design",
+      "Branding",
+      "Visual Communication"
+    ],
+    "related_interests": [
+      "Graphic Design",
+      "Art",
+      "Creativity",
+      "Visual Communication",
+      "Branding"
+    ]
+  },
+  {
+    "id": 46,
+    "career": "UX Researcher",
+    "category": "Arts, Design & Creative",
+    "required_skills": [
+      "User Research",
+      "Usability Testing",
+      "User Interviews",
+      "Survey Design",
+      "UX Research",
+      "Data Analysis",
+      "Prototyping",
+      "Communication"
+    ],
+    "related_interests": [
+      "User Research",
+      "Psychology",
+      "Design",
+      "Human Behavior",
+      "Technology"
+    ]
+  },
+  {
+    "id": 47,
+    "career": "Product Designer",
+    "category": "Arts, Design & Creative",
+    "required_skills": [
+      "Product Design",
+      "UI Design",
+      "UX Design",
+      "Figma",
+      "Prototyping",
+      "User Research",
+      "Design Systems",
+      "Visual Design"
+    ],
+    "related_interests": [
+      "Product Design",
+      "UX Design",
+      "Creativity",
+      "Technology",
+      "Visual Design"
+    ]
+  },
+  {
+    "id": 48,
+    "career": "Illustrator",
+    "category": "Arts, Design & Creative",
+    "required_skills": [
+      "Illustration",
+      "Drawing",
+      "Adobe Illustrator",
+      "Digital Art",
+      "Color Theory",
+      "Composition",
+      "Sketching",
+      "Visual Storytelling"
+    ],
+    "related_interests": [
+      "Drawing",
+      "Art",
+      "Illustration",
+      "Creativity",
+      "Visual Storytelling"
+    ]
+  },
+  {
+    "id": 49,
+    "career": "Animator",
+    "category": "Arts, Design & Creative",
+    "required_skills": [
+      "Animation",
+      "2D Animation",
+      "3D Animation",
+      "Storyboarding",
+      "Adobe After Effects",
+      "Character Design",
+      "Motion Design",
+      "Visual Storytelling"
+    ],
+    "related_interests": [
+      "Animation",
+      "Art",
+      "Storytelling",
+      "Character Design",
+      "Creativity"
+    ]
+  },
+  {
+    "id": 50,
+    "career": "3D Artist",
+    "category": "Arts, Design & Creative",
+    "required_skills": [
+      "3D Modeling",
+      "Blender",
+      "Texturing",
+      "Lighting",
+      "Rendering",
+      "3D Animation",
+      "Sculpting",
+      "Composition"
+    ],
+    "related_interests": [
+      "3D Art",
+      "Animation",
+      "Digital Art",
+      "Game Design",
+      "Creativity"
+    ]
+  },
+  {
+    "id": 51,
+    "career": "Art Director",
+    "category": "Arts, Design & Creative",
+    "required_skills": [
+      "Art Direction",
+      "Graphic Design",
+      "Branding",
+      "Visual Communication",
+      "Creative Direction",
+      "Typography",
+      "Photography",
+      "Leadership"
+    ],
+    "related_interests": [
+      "Art Direction",
+      "Creative Leadership",
+      "Branding",
+      "Visual Design",
+      "Art"
+    ]
+  },
+  {
+    "id": 52,
+    "career": "Fashion Designer",
+    "category": "Arts, Design & Creative",
+    "required_skills": [
+      "Fashion Design",
+      "Fashion Illustration",
+      "Pattern Making",
+      "Textile Design",
+      "Color Theory",
+      "Sewing",
+      "Trend Analysis",
+      "Design Software"
+    ],
+    "related_interests": [
+      "Fashion",
+      "Clothing Design",
+      "Creativity",
+      "Textiles",
+      "Art"
+    ]
+  },
+  {
+    "id": 53,
+    "career": "Interior Designer",
+    "category": "Arts, Design & Creative",
+    "required_skills": [
+      "Interior Design",
+      "Space Planning",
+      "AutoCAD",
+      "3D Modeling",
+      "Color Theory",
+      "Material Selection",
+      "Sketching",
+      "Project Management"
+    ],
+    "related_interests": [
+      "Interior Design",
+      "Architecture",
+      "Creativity",
+      "Space Planning",
+      "Visual Design"
+    ]
+  },
+  {
+    "id": 54,
+    "career": "Photographer",
+    "category": "Arts, Design & Creative",
+    "required_skills": [
+      "Photography",
+      "Camera Operation",
+      "Lighting",
+      "Composition",
+      "Photo Editing",
+      "Adobe Lightroom",
+      "Adobe Photoshop",
+      "Visual Storytelling"
+    ],
+    "related_interests": [
+      "Photography",
+      "Art",
+      "Visual Storytelling",
+      "Creativity",
+      "Travel"
+    ]
+  },
+  {
+    "id": 55,
+    "career": "Video Editor",
+    "category": "Arts, Design & Creative",
+    "required_skills": [
+      "Video Editing",
+      "Adobe Premiere Pro",
+      "DaVinci Resolve",
+      "After Effects",
+      "Color Grading",
+      "Audio Editing",
+      "Storytelling",
+      "Motion Graphics"
+    ],
+    "related_interests": [
+      "Video Editing",
+      "Film",
+      "Storytelling",
+      "Motion Graphics",
+      "Creativity"
+    ]
+  },
+  {
+    "id": 56,
+    "career": "Film/Video Producer",
+    "category": "Arts, Design & Creative",
+    "required_skills": [
+      "Film Production",
+      "Video Production",
+      "Project Management",
+      "Budgeting",
+      "Storytelling",
+      "Team Leadership",
+      "Scheduling",
+      "Communication"
+    ],
+    "related_interests": [
+      "Film Production",
+      "Storytelling",
+      "Media",
+      "Leadership",
+      "Event Production"
+    ]
+  },
+  {
+    "id": 57,
+    "career": "Content Creator",
+    "category": "Arts, Design & Creative",
+    "required_skills": [
+      "Content Creation",
+      "Video Production",
+      "Photography",
+      "Social Media",
+      "Storytelling",
+      "Video Editing",
+      "Copywriting",
+      "Audience Engagement"
+    ],
+    "related_interests": [
+      "Content Creation",
+      "Social Media",
+      "Video",
+      "Photography",
+      "Storytelling"
+    ]
+  },
+  {
+    "id": 58,
+    "career": "Copywriter",
+    "category": "Arts, Design & Creative",
+    "required_skills": [
+      "Copywriting",
+      "Creative Writing",
+      "Advertising",
+      "SEO Writing",
+      "Research",
+      "Editing",
+      "Brand Voice",
+      "Communication"
+    ],
+    "related_interests": [
+      "Writing",
+      "Advertising",
+      "Creativity",
+      "Storytelling",
+      "Communication"
+    ]
+  },
+  {
+    "id": 59,
+    "career": "Journalist",
+    "category": "Media & Communication",
+    "required_skills": [
+      "Journalism",
+      "Research",
+      "Interviewing",
+      "News Writing",
+      "Fact Checking",
+      "Editing",
+      "Communication",
+      "Digital Media"
+    ],
+    "related_interests": [
+      "Journalism",
+      "News",
+      "Research",
+      "Writing",
+      "Current Affairs"
+    ]
+  },
+  {
+    "id": 60,
+    "career": "Content Writer",
+    "category": "Media & Communication",
+    "required_skills": [
+      "Content Writing",
+      "Research",
+      "SEO",
+      "Copywriting",
+      "Editing",
+      "Grammar",
+      "WordPress",
+      "Communication"
+    ],
+    "related_interests": [
+      "Writing",
+      "Content Creation",
+      "Research",
+      "Digital Media",
+      "Communication"
+    ]
+  },
+  {
+    "id": 61,
+    "career": "Technical Writer",
+    "category": "Media & Communication",
+    "required_skills": [
+      "Technical Writing",
+      "Documentation",
+      "Research",
+      "Editing",
+      "Markdown",
+      "API Documentation",
+      "Communication",
+      "Information Architecture"
+    ],
+    "related_interests": [
+      "Technology",
+      "Writing",
+      "Documentation",
+      "Research",
+      "Communication"
+    ]
+  },
+  {
+    "id": 62,
+    "career": "Editor",
+    "category": "Media & Communication",
+    "required_skills": [
+      "Editing",
+      "Proofreading",
+      "Grammar",
+      "Content Review",
+      "Writing",
+      "Research",
+      "Style Guides",
+      "Communication"
+    ],
+    "related_interests": [
+      "Writing",
+      "Editing",
+      "Language",
+      "Books",
+      "Communication"
+    ]
+  },
+  {
+    "id": 63,
+    "career": "Social Media Manager",
+    "category": "Media & Communication",
+    "required_skills": [
+      "Social Media Marketing",
+      "Content Creation",
+      "Social Media Analytics",
+      "Copywriting",
+      "Brand Management",
+      "Community Management",
+      "Advertising",
+      "Communication"
+    ],
+    "related_interests": [
+      "Social Media",
+      "Content Creation",
+      "Marketing",
+      "Communication",
+      "Digital Media"
+    ]
+  },
+  {
+    "id": 64,
+    "career": "Public Relations Specialist",
+    "category": "Media & Communication",
+    "required_skills": [
+      "Public Relations",
+      "Media Relations",
+      "Press Releases",
+      "Communication",
+      "Event Management",
+      "Writing",
+      "Crisis Communication",
+      "Networking"
+    ],
+    "related_interests": [
+      "Public Relations",
+      "Media",
+      "Communication",
+      "Networking",
+      "Event Management"
+    ]
+  },
+  {
+    "id": 65,
+    "career": "Communications Specialist",
+    "category": "Media & Communication",
+    "required_skills": [
+      "Communication",
+      "Content Writing",
+      "Public Speaking",
+      "Internal Communications",
+      "Editing",
+      "Social Media",
+      "Presentation",
+      "Public Relations"
+    ],
+    "related_interests": [
+      "Communication",
+      "Writing",
+      "Public Speaking",
+      "Media",
+      "Content Creation"
+    ]
+  },
+  {
+    "id": 66,
+    "career": "Broadcast/Media Producer",
+    "category": "Media & Communication",
+    "required_skills": [
+      "Broadcast Production",
+      "Video Production",
+      "Storytelling",
+      "Editing",
+      "Production Planning",
+      "Project Management",
+      "Audio Production",
+      "Communication"
+    ],
+    "related_interests": [
+      "Broadcasting",
+      "Film",
+      "Media Production",
+      "Storytelling",
+      "Audio"
+    ]
+  },
+  {
+    "id": 67,
+    "career": "School Teacher",
+    "category": "Education & Research",
+    "required_skills": [
+      "Teaching",
+      "Lesson Planning",
+      "Classroom Management",
+      "Subject Knowledge",
+      "Assessment",
+      "Communication",
+      "Educational Technology",
+      "Student Engagement"
+    ],
+    "related_interests": [
+      "Teaching",
+      "Education",
+      "Children",
+      "Learning",
+      "Communication"
+    ]
+  },
+  {
+    "id": 68,
+    "career": "College Lecturer",
+    "category": "Education & Research",
+    "required_skills": [
+      "Teaching",
+      "Subject Expertise",
+      "Research",
+      "Academic Writing",
+      "Presentation",
+      "Curriculum Development",
+      "Assessment",
+      "Communication"
+    ],
+    "related_interests": [
+      "Teaching",
+      "Higher Education",
+      "Research",
+      "Academic Studies",
+      "Communication"
+    ]
+  },
+  {
+    "id": 69,
+    "career": "Teaching Assistant",
+    "category": "Education & Research",
+    "required_skills": [
+      "Teaching Support",
+      "Subject Knowledge",
+      "Communication",
+      "Classroom Management",
+      "Student Support",
+      "Assessment",
+      "Organization",
+      "Educational Technology"
+    ],
+    "related_interests": [
+      "Teaching",
+      "Education",
+      "Student Support",
+      "Learning",
+      "Communication"
+    ]
+  },
+  {
+    "id": 70,
+    "career": "Instructional Designer",
+    "category": "Education & Research",
+    "required_skills": [
+      "Instructional Design",
+      "Curriculum Development",
+      "Learning Theory",
+      "E-learning",
+      "Content Development",
+      "Learning Management Systems",
+      "Assessment Design",
+      "Educational Technology"
+    ],
+    "related_interests": [
+      "Education",
+      "E-Learning",
+      "Technology",
+      "Instructional Design",
+      "Teaching"
+    ]
+  },
+  {
+    "id": 71,
+    "career": "Educational Counselor",
+    "category": "Education & Research",
+    "required_skills": [
+      "Counseling",
+      "Career Guidance",
+      "Student Assessment",
+      "Communication",
+      "Psychology",
+      "Academic Planning",
+      "Interpersonal Skills",
+      "Student Support"
+    ],
+    "related_interests": [
+      "Counseling",
+      "Education",
+      "Psychology",
+      "Helping People",
+      "Career Development"
+    ]
+  },
+  {
+    "id": 72,
+    "career": "Academic Researcher",
+    "category": "Education & Research",
+    "required_skills": [
+      "Research Methods",
+      "Academic Writing",
+      "Statistics",
+      "Data Analysis",
+      "Literature Review",
+      "Research Design",
+      "Critical Thinking",
+      "Presentation"
+    ],
+    "related_interests": [
+      "Research",
+      "Academia",
+      "Statistics",
+      "Science",
+      "Writing"
+    ]
+  },
+  {
+    "id": 73,
+    "career": "Research Assistant",
+    "category": "Education & Research",
+    "required_skills": [
+      "Research Methods",
+      "Data Collection",
+      "Literature Review",
+      "Data Analysis",
+      "Academic Writing",
+      "Documentation",
+      "Critical Thinking",
+      "Statistics"
+    ],
+    "related_interests": [
+      "Research",
+      "Academia",
+      "Data Analysis",
+      "Science",
+      "Learning"
+    ]
+  },
+  {
+    "id": 74,
+    "career": "Curriculum Developer",
+    "category": "Education & Research",
+    "required_skills": [
+      "Curriculum Development",
+      "Instructional Design",
+      "Learning Objectives",
+      "Educational Assessment",
+      "Content Development",
+      "Research",
+      "Educational Technology",
+      "Communication"
+    ],
+    "related_interests": [
+      "Education",
+      "Curriculum Design",
+      "Teaching",
+      "Learning",
+      "Research"
+    ]
+  },
+  {
+    "id": 75,
+    "career": "Biologist",
+    "category": "Science & Laboratory",
+    "required_skills": [
+      "Biology",
+      "Laboratory Techniques",
+      "Scientific Research",
+      "Data Analysis",
+      "Microscopy",
+      "Scientific Writing",
+      "Statistics",
+      "Experimentation"
+    ],
+    "related_interests": [
+      "Biology",
+      "Science",
+      "Research",
+      "Nature",
+      "Laboratory Work"
+    ]
+  },
+  {
+    "id": 76,
+    "career": "Chemist",
+    "category": "Science & Laboratory",
+    "required_skills": [
+      "Chemistry",
+      "Laboratory Techniques",
+      "Chemical Analysis",
+      "Analytical Chemistry",
+      "Experimentation",
+      "Scientific Writing",
+      "Data Analysis",
+      "Laboratory Safety"
+    ],
+    "related_interests": [
+      "Chemistry",
+      "Science",
+      "Laboratory Work",
+      "Research",
+      "Experimentation"
+    ]
+  },
+  {
+    "id": 77,
+    "career": "Physicist",
+    "category": "Science & Laboratory",
+    "required_skills": [
+      "Physics",
+      "Mathematics",
+      "Scientific Research",
+      "Data Analysis",
+      "Experimentation",
+      "Programming",
+      "Mathematical Modeling",
+      "Scientific Writing"
+    ],
+    "related_interests": [
+      "Physics",
+      "Science",
+      "Mathematics",
+      "Research",
+      "Technology"
+    ]
+  },
+  {
+    "id": 78,
+    "career": "Environmental Scientist",
+    "category": "Science & Laboratory",
+    "required_skills": [
+      "Environmental Science",
+      "Data Analysis",
+      "Environmental Assessment",
+      "Field Research",
+      "GIS",
+      "Scientific Research",
+      "Statistics",
+      "Environmental Regulations"
+    ],
+    "related_interests": [
+      "Environment",
+      "Climate",
+      "Nature",
+      "Science",
+      "Sustainability"
+    ]
+  },
+  {
+    "id": 79,
+    "career": "Microbiologist",
+    "category": "Science & Laboratory",
+    "required_skills": [
+      "Microbiology",
+      "Laboratory Techniques",
+      "Cell Culture",
+      "Microscopy",
+      "Molecular Biology",
+      "Scientific Research",
+      "Data Analysis",
+      "Laboratory Safety"
+    ],
+    "related_interests": [
+      "Microbiology",
+      "Biology",
+      "Laboratory Research",
+      "Science",
+      "Healthcare"
+    ]
+  },
+  {
+    "id": 80,
+    "career": "Laboratory Technician",
+    "category": "Science & Laboratory",
+    "required_skills": [
+      "Laboratory Techniques",
+      "Sample Preparation",
+      "Equipment Handling",
+      "Data Recording",
+      "Quality Control",
+      "Laboratory Safety",
+      "Scientific Methods",
+      "Documentation"
+    ],
+    "related_interests": [
+      "Laboratory Work",
+      "Science",
+      "Research",
+      "Quality Control",
+      "Experimentation"
+    ]
+  },
+  {
+    "id": 81,
+    "career": "Research Scientist",
+    "category": "Science & Laboratory",
+    "required_skills": [
+      "Scientific Research",
+      "Research Design",
+      "Data Analysis",
+      "Statistics",
+      "Experimentation",
+      "Scientific Writing",
+      "Literature Review",
+      "Critical Thinking"
+    ],
+    "related_interests": [
+      "Scientific Research",
+      "Science",
+      "Experimentation",
+      "Academia",
+      "Discovery"
+    ]
+  },
+  {
+    "id": 82,
+    "career": "Statistician",
+    "category": "Science & Laboratory",
+    "required_skills": [
+      "Statistics",
+      "Probability",
+      "Python",
+      "R",
+      "Data Analysis",
+      "Statistical Modeling",
+      "Data Visualization",
+      "Mathematics"
+    ],
+    "related_interests": [
+      "Statistics",
+      "Mathematics",
+      "Data Science",
+      "Research",
+      "Data Analysis"
+    ]
+  },
+  {
+    "id": 83,
+    "career": "Medical Laboratory Technician",
+    "category": "Healthcare",
+    "required_skills": [
+      "Medical Laboratory Techniques",
+      "Clinical Chemistry",
+      "Hematology",
+      "Microbiology",
+      "Sample Handling",
+      "Laboratory Safety",
+      "Quality Control",
+      "Medical Terminology"
+    ],
+    "related_interests": [
+      "Healthcare",
+      "Laboratory Science",
+      "Medicine",
+      "Biology",
+      "Diagnostics"
+    ]
+  },
+  {
+    "id": 84,
+    "career": "Radiology Technician",
+    "category": "Healthcare",
+    "required_skills": [
+      "Radiologic Technology",
+      "X-ray Imaging",
+      "Patient Care",
+      "Radiation Safety",
+      "Medical Imaging",
+      "Anatomy",
+      "Equipment Operation",
+      "Medical Terminology"
+    ],
+    "related_interests": [
+      "Healthcare",
+      "Medical Imaging",
+      "Technology",
+      "Patient Care",
+      "Anatomy"
+    ]
+  },
+  {
+    "id": 85,
+    "career": "Physiotherapist",
+    "category": "Healthcare",
+    "required_skills": [
+      "Physiotherapy",
+      "Human Anatomy",
+      "Exercise Therapy",
+      "Rehabilitation",
+      "Patient Assessment",
+      "Manual Therapy",
+      "Patient Care",
+      "Communication"
+    ],
+    "related_interests": [
+      "Healthcare",
+      "Fitness",
+      "Rehabilitation",
+      "Human Anatomy",
+      "Helping People"
+    ]
+  },
+  {
+    "id": 86,
+    "career": "Nutritionist/Dietitian",
+    "category": "Healthcare",
+    "required_skills": [
+      "Nutrition",
+      "Diet Planning",
+      "Human Biology",
+      "Food Science",
+      "Nutritional Assessment",
+      "Health Education",
+      "Communication",
+      "Research"
+    ],
+    "related_interests": [
+      "Nutrition",
+      "Health",
+      "Food Science",
+      "Wellness",
+      "Helping People"
+    ]
+  },
+  {
+    "id": 87,
+    "career": "Healthcare Administrator",
+    "category": "Healthcare",
+    "required_skills": [
+      "Healthcare Management",
+      "Healthcare Operations",
+      "Medical Records",
+      "Healthcare Regulations",
+      "Data Management",
+      "Financial Management",
+      "Leadership",
+      "Communication"
+    ],
+    "related_interests": [
+      "Healthcare Management",
+      "Healthcare",
+      "Administration",
+      "Leadership",
+      "Operations"
+    ]
+  },
+  {
+    "id": 88,
+    "career": "Clinical Research Associate",
+    "category": "Healthcare",
+    "required_skills": [
+      "Clinical Research",
+      "Clinical Trials",
+      "GCP",
+      "Data Management",
+      "Research Documentation",
+      "Regulatory Compliance",
+      "Medical Terminology",
+      "Monitoring"
+    ],
+    "related_interests": [
+      "Clinical Research",
+      "Medicine",
+      "Healthcare",
+      "Research",
+      "Science"
+    ]
+  },
+  {
+    "id": 89,
+    "career": "Pharmacist",
+    "category": "Healthcare",
+    "required_skills": [
+      "Pharmacology",
+      "Pharmaceutical Sciences",
+      "Medication Management",
+      "Patient Counseling",
+      "Drug Safety",
+      "Prescription Management",
+      "Medical Terminology",
+      "Healthcare Regulations"
+    ],
+    "related_interests": [
+      "Pharmacy",
+      "Medicine",
+      "Healthcare",
+      "Chemistry",
+      "Helping People"
+    ]
+  },
+  {
+    "id": 90,
+    "career": "Public Health Specialist",
+    "category": "Healthcare",
+    "required_skills": [
+      "Public Health",
+      "Epidemiology",
+      "Biostatistics",
+      "Health Promotion",
+      "Research",
+      "Data Analysis",
+      "Healthcare Policy",
+      "Community Health"
+    ],
+    "related_interests": [
+      "Public Health",
+      "Healthcare",
+      "Community Health",
+      "Epidemiology",
+      "Research"
+    ]
+  },
+  {
+    "id": 91,
+    "career": "Legal Assistant",
+    "category": "Law, Government & Public Service",
+    "required_skills": [
+      "Legal Research",
+      "Legal Documentation",
+      "Legal Terminology",
+      "Case Management",
+      "Legal Writing",
+      "Organization",
+      "Communication",
+      "Microsoft Office"
+    ],
+    "related_interests": [
+      "Law",
+      "Legal Research",
+      "Writing",
+      "Organization",
+      "Government"
+    ]
+  },
+  {
+    "id": 92,
+    "career": "Legal Researcher",
+    "category": "Law, Government & Public Service",
+    "required_skills": [
+      "Legal Research",
+      "Legal Writing",
+      "Case Analysis",
+      "Legal Databases",
+      "Law",
+      "Critical Thinking",
+      "Documentation",
+      "Communication"
+    ],
+    "related_interests": [
+      "Law",
+      "Legal Research",
+      "Critical Thinking",
+      "Writing",
+      "Justice"
+    ]
+  },
+  {
+    "id": 93,
+    "career": "Compliance Specialist",
+    "category": "Law, Government & Public Service",
+    "required_skills": [
+      "Compliance",
+      "Regulatory Knowledge",
+      "Risk Management",
+      "Auditing",
+      "Documentation",
+      "Policy Analysis",
+      "Research",
+      "Communication"
+    ],
+    "related_interests": [
+      "Compliance",
+      "Law",
+      "Regulations",
+      "Risk Management",
+      "Business"
+    ]
+  },
+  {
+    "id": 94,
+    "career": "Policy Analyst",
+    "category": "Law, Government & Public Service",
+    "required_skills": [
+      "Policy Analysis",
+      "Research",
+      "Data Analysis",
+      "Statistics",
+      "Report Writing",
+      "Public Policy",
+      "Critical Thinking",
+      "Communication"
+    ],
+    "related_interests": [
+      "Public Policy",
+      "Government",
+      "Research",
+      "Data Analysis",
+      "Social Issues"
+    ]
+  },
+  {
+    "id": 95,
+    "career": "Public Administration Specialist",
+    "category": "Law, Government & Public Service",
+    "required_skills": [
+      "Public Administration",
+      "Government Operations",
+      "Policy Analysis",
+      "Project Management",
+      "Budgeting",
+      "Communication",
+      "Research",
+      "Documentation"
+    ],
+    "related_interests": [
+      "Government",
+      "Public Service",
+      "Administration",
+      "Policy",
+      "Community Development"
+    ]
+  },
+  {
+    "id": 96,
+    "career": "Government Administrative Officer",
+    "category": "Law, Government & Public Service",
+    "required_skills": [
+      "Public Administration",
+      "Government Procedures",
+      "Documentation",
+      "Communication",
+      "Record Management",
+      "Policy Knowledge",
+      "Office Administration",
+      "Problem Solving"
+    ],
+    "related_interests": [
+      "Government",
+      "Public Service",
+      "Administration",
+      "Organization",
+      "Community"
+    ]
+  },
+  {
+    "id": 97,
+    "career": "Mechanical Engineer",
+    "category": "Engineering & Manufacturing",
+    "required_skills": [
+      "Mechanical Engineering",
+      "CAD",
+      "AutoCAD",
+      "SolidWorks",
+      "Thermodynamics",
+      "Engineering Mathematics",
+      "Manufacturing",
+      "Problem Solving"
+    ],
+    "related_interests": [
+      "Mechanical Engineering",
+      "Machines",
+      "Design",
+      "Manufacturing",
+      "Technology"
+    ]
+  },
+  {
+    "id": 98,
+    "career": "Civil Engineer",
+    "category": "Engineering & Manufacturing",
+    "required_skills": [
+      "Civil Engineering",
+      "AutoCAD",
+      "Structural Analysis",
+      "Construction Management",
+      "Surveying",
+      "Engineering Mathematics",
+      "Project Management",
+      "Building Materials"
+    ],
+    "related_interests": [
+      "Civil Engineering",
+      "Construction",
+      "Infrastructure",
+      "Architecture",
+      "Problem Solving"
+    ]
+  },
+  {
+    "id": 99,
+    "career": "Electrical Engineer",
+    "category": "Engineering & Manufacturing",
+    "required_skills": [
+      "Electrical Engineering",
+      "Circuit Analysis",
+      "Power Systems",
+      "Electrical Design",
+      "MATLAB",
+      "Control Systems",
+      "Engineering Mathematics",
+      "Troubleshooting"
+    ],
+    "related_interests": [
+      "Electrical Engineering",
+      "Electronics",
+      "Power Systems",
+      "Technology",
+      "Problem Solving"
+    ]
+  },
+  {
+    "id": 100,
+    "career": "Electronics Engineer",
+    "category": "Engineering & Manufacturing",
+    "required_skills": [
+      "Electronics",
+      "Circuit Design",
+      "Digital Electronics",
+      "Embedded Systems",
+      "PCB Design",
+      "Microcontrollers",
+      "MATLAB",
+      "Troubleshooting"
+    ],
+    "related_interests": [
+      "Electronics",
+      "Technology",
+      "Embedded Systems",
+      "Robotics",
+      "Circuit Design"
+    ]
+  },
+  {
+    "id": 101,
+    "career": "Chemical Engineer",
+    "category": "Engineering & Manufacturing",
+    "required_skills": [
+      "Chemical Engineering",
+      "Chemical Processes",
+      "Thermodynamics",
+      "Fluid Mechanics",
+      "Process Design",
+      "Process Control",
+      "Engineering Mathematics",
+      "Safety"
+    ],
+    "related_interests": [
+      "Chemical Engineering",
+      "Chemistry",
+      "Manufacturing",
+      "Process Design",
+      "Science"
+    ]
+  },
+  {
+    "id": 102,
+    "career": "Industrial Engineer",
+    "category": "Engineering & Manufacturing",
+    "required_skills": [
+      "Industrial Engineering",
+      "Process Improvement",
+      "Lean Manufacturing",
+      "Six Sigma",
+      "Operations Research",
+      "Data Analysis",
+      "Quality Management",
+      "Project Management"
+    ],
+    "related_interests": [
+      "Industrial Engineering",
+      "Manufacturing",
+      "Process Improvement",
+      "Operations",
+      "Optimization"
+    ]
+  },
+  {
+    "id": 103,
+    "career": "Manufacturing Engineer",
+    "category": "Engineering & Manufacturing",
+    "required_skills": [
+      "Manufacturing Processes",
+      "CAD",
+      "Production Planning",
+      "Lean Manufacturing",
+      "Quality Control",
+      "Process Improvement",
+      "CNC",
+      "Engineering Design"
+    ],
+    "related_interests": [
+      "Manufacturing",
+      "Engineering",
+      "Production",
+      "CAD Design",
+      "Process Improvement"
+    ]
+  },
+  {
+    "id": 104,
+    "career": "Robotics Engineer",
+    "category": "Engineering & Manufacturing",
+    "required_skills": [
+      "Robotics",
+      "Python",
+      "C++",
+      "ROS",
+      "Control Systems",
+      "Computer Vision",
+      "Embedded Systems",
+      "Mechanical Design"
+    ],
+    "related_interests": [
+      "Robotics",
+      "Artificial Intelligence",
+      "Programming",
+      "Automation",
+      "Engineering"
+    ]
+  },
+  {
+    "id": 105,
+    "career": "Automotive Engineer",
+    "category": "Engineering & Manufacturing",
+    "required_skills": [
+      "Automotive Engineering",
+      "Vehicle Dynamics",
+      "CAD",
+      "Automotive Electronics",
+      "Thermodynamics",
+      "Manufacturing",
+      "Mechanical Design",
+      "Testing"
+    ],
+    "related_interests": [
+      "Automobiles",
+      "Mechanical Engineering",
+      "Vehicle Technology",
+      "Design",
+      "Manufacturing"
+    ]
+  },
+  {
+    "id": 106,
+    "career": "Agricultural Scientist",
+    "category": "Agriculture & Environment",
+    "required_skills": [
+      "Agricultural Science",
+      "Crop Science",
+      "Soil Science",
+      "Research",
+      "Data Analysis",
+      "Agricultural Technology",
+      "Experimentation",
+      "Field Research"
+    ],
+    "related_interests": [
+      "Agriculture",
+      "Crop Science",
+      "Research",
+      "Technology",
+      "Environment"
+    ]
+  },
+  {
+    "id": 107,
+    "career": "Agronomist",
+    "category": "Agriculture & Environment",
+    "required_skills": [
+      "Agronomy",
+      "Crop Management",
+      "Soil Science",
+      "Plant Science",
+      "Pest Management",
+      "Agricultural Research",
+      "Farm Management",
+      "Data Analysis"
+    ],
+    "related_interests": [
+      "Agriculture",
+      "Farming",
+      "Plants",
+      "Soil Science",
+      "Research"
+    ]
+  },
+  {
+    "id": 108,
+    "career": "Environmental Consultant",
+    "category": "Agriculture & Environment",
+    "required_skills": [
+      "Environmental Science",
+      "Environmental Assessment",
+      "Environmental Regulations",
+      "GIS",
+      "Data Analysis",
+      "Report Writing",
+      "Sustainability",
+      "Project Management"
+    ],
+    "related_interests": [
+      "Environment",
+      "Sustainability",
+      "Climate",
+      "Consulting",
+      "Conservation"
+    ]
+  },
+  {
+    "id": 109,
+    "career": "Forestry Specialist",
+    "category": "Agriculture & Environment",
+    "required_skills": [
+      "Forestry",
+      "Forest Management",
+      "Ecology",
+      "GIS",
+      "Environmental Conservation",
+      "Field Research",
+      "Natural Resource Management",
+      "Data Collection"
+    ],
+    "related_interests": [
+      "Forests",
+      "Nature",
+      "Environmental Conservation",
+      "Wildlife",
+      "Outdoor Work"
+    ]
+  },
+  {
+    "id": 110,
+    "career": "Food Technologist",
+    "category": "Agriculture & Environment",
+    "required_skills": [
+      "Food Science",
+      "Food Chemistry",
+      "Food Safety",
+      "Quality Control",
+      "Food Processing",
+      "Microbiology",
+      "Product Development",
+      "HACCP"
+    ],
+    "related_interests": [
+      "Food Science",
+      "Food Technology",
+      "Cooking",
+      "Product Development",
+      "Science"
+    ]
+  },
+  {
+    "id": 111,
+    "career": "Hotel Manager",
+    "category": "Hospitality, Travel & Service",
+    "required_skills": [
+      "Hotel Management",
+      "Hospitality Management",
+      "Customer Service",
+      "Operations Management",
+      "Staff Management",
+      "Budgeting",
+      "Event Management",
+      "Communication"
+    ],
+    "related_interests": [
+      "Hospitality",
+      "Hotels",
+      "Travel",
+      "Customer Service",
+      "Leadership"
+    ]
+  },
+  {
+    "id": 112,
+    "career": "Event Manager",
+    "category": "Hospitality, Travel & Service",
+    "required_skills": [
+      "Event Management",
+      "Event Planning",
+      "Budgeting",
+      "Vendor Management",
+      "Communication",
+      "Marketing",
+      "Project Management",
+      "Negotiation"
+    ],
+    "related_interests": [
+      "Events",
+      "Event Planning",
+      "Entertainment",
+      "Marketing",
+      "People Management"
+    ]
+  },
+  {
+    "id": 113,
+    "career": "Travel Consultant",
+    "category": "Hospitality, Travel & Service",
+    "required_skills": [
+      "Travel Planning",
+      "Tourism",
+      "Customer Service",
+      "Travel Booking",
+      "Communication",
+      "Geography",
+      "Travel Software",
+      "Sales"
+    ],
+    "related_interests": [
+      "Travel",
+      "Tourism",
+      "Geography",
+      "Customer Service",
+      "Planning"
+    ]
+  },
+  {
+    "id": 114,
+    "career": "Tourism Manager",
+    "category": "Hospitality, Travel & Service",
+    "required_skills": [
+      "Tourism Management",
+      "Travel Planning",
+      "Hospitality",
+      "Marketing",
+      "Customer Service",
+      "Event Management",
+      "Budgeting",
+      "Communication"
+    ],
+    "related_interests": [
+      "Tourism",
+      "Travel",
+      "Hospitality",
+      "Marketing",
+      "Event Management"
+    ]
+  },
+  {
+    "id": 115,
+    "career": "Chef",
+    "category": "Hospitality, Travel & Service",
+    "required_skills": [
+      "Cooking",
+      "Food Preparation",
+      "Menu Planning",
+      "Food Safety",
+      "Kitchen Management",
+      "Food Presentation",
+      "Ingredient Knowledge",
+      "Time Management"
+    ],
+    "related_interests": [
+      "Cooking",
+      "Food",
+      "Creativity",
+      "Hospitality",
+      "Culinary Arts"
+    ]
+  },
+  {
+    "id": 116,
+    "career": "Restaurant Manager",
+    "category": "Hospitality, Travel & Service",
+    "required_skills": [
+      "Restaurant Management",
+      "Customer Service",
+      "Staff Management",
+      "Inventory Management",
+      "Food Safety",
+      "Budgeting",
+      "Operations Management",
+      "Communication"
+    ],
+    "related_interests": [
+      "Restaurants",
+      "Hospitality",
+      "Customer Service",
+      "Leadership",
+      "Food"
+    ]
+  },
+  {
+    "id": 117,
+    "career": "Retail Manager",
+    "category": "Retail & E-commerce",
+    "required_skills": [
+      "Retail Management",
+      "Sales Management",
+      "Inventory Management",
+      "Customer Service",
+      "Staff Management",
+      "Merchandising",
+      "Budgeting",
+      "Communication"
+    ],
+    "related_interests": [
+      "Retail",
+      "Sales",
+      "Customer Service",
+      "Fashion",
+      "Business"
+    ]
+  },
+  {
+    "id": 118,
+    "career": "E-commerce Specialist",
+    "category": "Retail & E-commerce",
+    "required_skills": [
+      "E-commerce",
+      "Digital Marketing",
+      "SEO",
+      "Product Management",
+      "Analytics",
+      "Online Advertising",
+      "Content Management",
+      "Customer Experience"
+    ],
+    "related_interests": [
+      "E-Commerce",
+      "Digital Marketing",
+      "Online Business",
+      "Technology",
+      "Analytics"
+    ]
+  },
+  {
+    "id": 119,
+    "career": "Merchandising Specialist",
+    "category": "Retail & E-commerce",
+    "required_skills": [
+      "Merchandising",
+      "Product Management",
+      "Retail Analytics",
+      "Inventory Management",
+      "Market Research",
+      "Visual Merchandising",
+      "Sales Analysis",
+      "Trend Analysis"
+    ],
+    "related_interests": [
+      "Retail",
+      "Fashion",
+      "Product Trends",
+      "Visual Design",
+      "Business"
+    ]
+  },
+  {
+    "id": 120,
+    "career": "Customer Success Specialist",
+    "category": "Retail & E-commerce",
+    "required_skills": [
+      "Customer Success",
+      "Customer Relationship Management",
+      "Communication",
+      "Problem Solving",
+      "CRM",
+      "Product Knowledge",
+      "Customer Support",
+      "Data Analysis"
+    ],
+    "related_interests": [
+      "Customer Relationships",
+      "Communication",
+      "Problem Solving",
+      "Technology",
+      "Helping People"
+    ]
+  },
+  {
+    "id": 121,
+    "career": "Customer Support Specialist",
+    "category": "Retail & E-commerce",
+    "required_skills": [
+      "Customer Service",
+      "Communication",
+      "Problem Solving",
+      "CRM",
+      "Technical Support",
+      "Ticket Management",
+      "Product Knowledge",
+      "Conflict Resolution"
+    ],
+    "related_interests": [
+      "Customer Service",
+      "Communication",
+      "Problem Solving",
+      "Technology",
+      "Helping People"
+    ]
+  },
+  {
+    "id": 122,
+    "career": "QA/Test Engineer",
+    "category": "Technology & Software",
+    "required_skills": [
+      "Software Testing",
+      "Test Planning",
+      "Manual Testing",
+      "Test Cases",
+      "Bug Tracking",
+      "API Testing",
+      "SQL",
+      "Quality Assurance"
+    ],
+    "related_interests": [
+      "Software Testing",
+      "Quality Assurance",
+      "Technology",
+      "Problem Solving",
+      "Software Development"
+    ]
+  },
+  {
+    "id": 123,
+    "career": "Automation Test Engineer",
+    "category": "Technology & Software",
+    "required_skills": [
+      "Test Automation",
+      "Selenium",
+      "Python",
+      "Java",
+      "API Testing",
+      "Test Frameworks",
+      "CI/CD",
+      "Software Testing"
+    ],
+    "related_interests": [
+      "Test Automation",
+      "Software Testing",
+      "Programming",
+      "Technology",
+      "Quality Assurance"
+    ]
+  }
+]
